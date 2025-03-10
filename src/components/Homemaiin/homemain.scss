@@ -1,0 +1,45 @@
+.home-container {
+  background: url("../../../public/banner.png");
+  background-position: center;
+  background-size: cover;
+  min-height: 80vh;
+
+  .summer-text {
+    color: #ff3d00;
+    font-size: 22px;
+    letter-spacing: 4px;
+    line-height: 2;
+    font-weight: 500;
+  }
+  .collection {
+    letter-spacing: 4px;
+    font-weight: 500;
+  }
+  .stay-cool{
+    color: gray;
+    font-weight: 500;
+  }
+  .shop-now{
+    background-color: black;
+    padding: 10px;
+    font-size: 22px;
+    width: 65%;
+    color: white;
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+  .shop-now:hover{
+     background-color: #7b6ddc   !important;
+     border-radius: 10px;
+     border: 1px solid gray;
+  }
+}
+@media(max-width:992px){
+    .home-container{
+        background-position: unset;
+        text-align: center;
+    }
+    .home-container .column{
+        margin-top: 4rem !important;
+    }
+}

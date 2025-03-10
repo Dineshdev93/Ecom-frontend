@@ -1,0 +1,143 @@
+header {
+  background-color: #fff;
+  position: sticky;
+  width: 100%;
+  padding: 10px;
+  box-shadow: 0px 0px 5px 0px gray;
+  // position: fixed;
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      .p1 a {
+        text-decoration: none;
+        font-size: 18px;
+        color: black;
+        font-weight: 500;
+      }
+      .badge-icon,
+      span,
+      i {
+        font-size: 28px;
+        position: relative;
+        .badge {
+          position: absolute;
+          top: -5px; /* Adjust the position */
+          right: -10px; /* Adjust the position */
+          background-color: rgba(255, 0, 0, 0.986);
+          color: white;
+          font-size: 12px;
+          font-weight: bold;
+          padding: 2px 6px;
+          border-radius: 50%;
+          line-height: 1;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          min-width: 18px; /* Ensure the badge doesn't shrink */
+          height: 18px;
+        }
+      }
+      .dropdown{
+        .btn-primary{
+            --bs-btn-color: black !important; 
+           --bs-btn-bg: unset !important;
+           --bs-btn-border-color : white;
+        }
+        .btn:hover{
+            --bs-btn-hover-color:black !important;
+            --bs-btn-hover-bg : unset !important;
+            --bs-btn-hover-border-color : white !important;
+        }
+        .btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active{
+            --bs-btn-active-border-color : white !important;
+            --bs-btn-active-bg:unset !important;
+            --bs-btn-active-color : black !important;
+        }
+        .dropdown-toggle::after{
+            content: unset !important;
+        }  
+      }
+      .hamburger{
+        display: none;
+      }
+    }
+  }
+}
+@media(max-width:992px){
+  .right   .p1, .dropdown-basic ,.badge-icon{
+    display: none;
+  }
+  header nav .right, .hamburger{
+    display: block !important;
+  }
+}
+
+.sidebar{
+
+  .p2 a{
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    font-weight: 500;
+  }
+  .badge-icon2,
+      span,
+      i {
+        font-size: 28px;
+        position: relative;
+        
+        .badge {
+          position: absolute;
+          top: -5px; /* Adjust the position */
+          right: -10px; /* Adjust the position */
+          background-color: rgba(255, 0, 0, 0.986);
+          color: white;
+          font-size: 12px;
+          font-weight: bold;
+          padding: 2px 6px;
+          border-radius: 50%;
+          line-height: 1;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          min-width: 18px; /* Ensure the badge doesn't shrink */
+          height: 18px;
+        }
+      }
+      .dropdown2{
+        .btn-primary{
+            --bs-btn-color: black !important; 
+           --bs-btn-bg: unset !important;
+           --bs-btn-border-color : white;
+        }
+        .btn:hover{
+            --bs-btn-hover-color:black !important;
+            --bs-btn-hover-bg : unset !important;
+            --bs-btn-hover-border-color : white !important;
+        }
+        .btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active{
+            --bs-btn-active-border-color : white !important;
+            --bs-btn-active-bg:unset !important;
+            --bs-btn-active-color : black !important;
+        }
+        .dropdown-toggle::after{
+            content: unset !important;
+        
+        }  
+      }
+      .sidebar .offcanvas offcanvas-start .show{
+        width: 30%;
+      }
+       .dropdown2 .btn-primary{
+        --bs-btn-border-color : #bad9ff;
+       }
+       
+        }
+

@@ -1,0 +1,163 @@
+.signup_login_form_caontainer h1 {
+    font-weight: 500;
+  }
+  .signup_login_form_caontainer .register_user {
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
+    margin-top: 3rem;
+    padding: 20px;
+  }
+  .signup_login_form_caontainer .register_user .subhedaing {
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 1px;
+    line-height: 1.3;
+    font-size: 18px;
+  }
+  .signup_login_form_caontainer .subhedaing a {
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid;
+    color: #606060;
+  }
+  .signup_login_form_caontainer .form-control {
+    padding: 11px;
+    border-radius: unset;
+  }
+  .signup_login_form_caontainer label {
+    font-size: 17px;
+    letter-spacing: 1px;
+  }
+  .signup_login_form_caontainer .password_container {
+    position: relative;
+  }
+  .password_container .eye_icon {
+    position: absolute;
+    right: 10px;
+    top: 45px;
+  }
+  .signup_login_form_caontainer .btn_register button {
+    width: 100%;
+    border: none;
+    background-color: #7b6ddc ;
+    color: #fff;
+    font-size: 26px;
+    font-weight: 600;
+    padding: 5px;
+    border-radius: 7px;
+  }
+  .signup_login_form_caontainer .btn_register button:hover{
+    border-radius: 2rem;
+  }
+  .signup_login_form_caontainer .form-control:focus {
+    border-color: rgb(155, 150, 150);
+    box-shadow: unset;
+  }
+  @media (max-width: 768px) {
+    .signup_login_form_caontainer .register_user .subhedaing {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      letter-spacing: unset;
+      line-height: unset;
+      font-size: unset;
+    }
+  }
+  
+  .signup_login_form_caontainer .forgotpasslink a {
+    text-decoration: none;
+    color: #1c67c7;
+    font-weight: 500;
+    font-size: 16px;
+    border-bottom: 1px solid;
+  }
+  .signup_login_form_caontainer .forgotpasslink{
+    text-align: end;
+  }
+  .forgotpassword {
+    padding: 40px 0;
+  }
+  
+  .forgotpassword-heading {
+    font-size: 1.8rem;
+    color: #333;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .forgotpassword input {
+    width: 100%;
+    padding: 12px;
+    outline: none;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-top: 10px;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .forgotpassword input:focus {
+    border-color: #e9bf80;
+    box-shadow: 0px 0px 6px rgba(233, 191, 128, 0.5);
+  }
+  
+  .forgotsubmit {
+    width: 100%;
+    outline: none;
+    font-size: 26px;
+    color: #fff;
+    background-color: #7b6ddc ;
+    letter-spacing: 1px;
+    font-weight: 500;
+    border: none;
+    padding: 6px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  
+  
+  .divider {
+    display: flex
+  ;
+    align-items: center;
+    text-align: center;
+    border: none;
+   
+    letter-spacing: 1px;
+  }
+  .divider::before {
+    margin-right: 10px;
+  }
+  
+  .divider::before, .divider::after {
+    content: "";
+    flex: 1;
+    /* border-bottom: 1px solid gray; */
+  }
+  .divider::after {
+    margin-left: 10px;
+  }
+  .signup_login_form_caontainer .logingoogle{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+    cursor: pointer;
+    margin-top: 8px;
+    border: 1px solid rgb(199, 192, 192);
+    padding: 10px;
+    border-radius: 7px;
+  }
+  .signup_login_form_caontainer .logingoogle:hover{
+    border-radius: 2rem;
+  }
+  .signup_login_form_caontainer .logingoogle span{
+    font-size: 20px;
+  }
+  
+  

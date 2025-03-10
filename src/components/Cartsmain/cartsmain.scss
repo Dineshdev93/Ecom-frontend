@@ -1,0 +1,16 @@
+.cart-section{
+    margin-top: 4rem;
+    .cart-section-left{
+         border: 1px solid gray;
+         padding: 10px;
+         border-radius: 5px;
+        
+         .increase-decrese button{
+            border: none;
+    font-size: 16px;
+    padding-left: 18px;
+    padding-right: 21px;
+    font-weight: 500;
+         }
+ }
+}

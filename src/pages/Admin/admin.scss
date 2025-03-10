@@ -1,0 +1,72 @@
+.sidebar{
+    position: relative;
+    background-color: #023040;
+    color:  #ffffff;
+    padding: 10px;
+    height: 100vh;
+    .sub-sidebar{
+        position: absolute;
+        right: 0px;
+        background-color: #254248;
+        padding: 18px;
+        padding-top: 42px;
+    padding-bottom: 42px;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    }
+    .sub-sidebar a{
+        text-decoration: none;
+        color: white;
+       font-size: 15px;
+
+    }
+}
+   
+.admin-header{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    
+    .dashboard-input{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        i{
+            position: absolute;
+            right: 10px;
+            color: gray;;
+        }
+    }
+    .dashboard-input input{
+         padding: 5px;
+         width: 30rem;
+         border : 1px solid gray;
+         border-radius: 6px
+    };
+    .dropdown{
+        .btn-primary{
+            --bs-btn-color: black !important; 
+           --bs-btn-bg: unset !important;
+           --bs-btn-border-color : white;
+        }
+        .btn:hover{
+            --bs-btn-hover-color:black !important;
+            --bs-btn-hover-bg : unset !important;
+            --bs-btn-hover-border-color : white !important;
+        }
+        .btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active{
+            --bs-btn-active-border-color : white !important;
+            --bs-btn-active-bg:unset !important;
+            --bs-btn-active-color : black !important;
+        }
+        .dropdown-toggle::after{
+            content: unset !important;
+        }  
+      }
+}
+
+.admin-get-products .childs .card{
+     height: 100%;
+     width : 100%
+}
