@@ -5,7 +5,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch,useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { Loginuser, Userverifyed } from "../../redux/slice/userAuthSlice/UserSlice";
-
+import Spiner from '../../../src/pages/Loader/Spiner'
 
 
 export default function Login() {
@@ -14,7 +14,7 @@ export default function Login() {
   const [showpass, setShowpass] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const {LoggeduserData} = useSelector((state)=>state.userauth)
+  const {LoggeduserData , loading} = useSelector((state)=>state.userauth)
   useEffect(()=>{
      dispatch(Userverifyed());
    },[])
@@ -32,9 +32,11 @@ export default function Login() {
         dispatch(Loginuser(data)).then((res) => {
           // console.log(res);
           if (res.payload === undefined) {
-            toast.error("Invalid details");
+            console.log("sssssssssssssssssss");
+            
+            return toast.error("Invalid details");
           } else {
-            navigate("/");
+            return navigate("/");
           }
         });
       }
@@ -55,6 +57,8 @@ export default function Login() {
 
   return (
     <>
+    {
+      loading ? <Spiner/> : 
       <section className="container signup_login_form_caontainer mb-5">
         <div className="row justify-content-center">
           <div className="col-md-7  register_user">
@@ -126,6 +130,9 @@ export default function Login() {
           </div>
         </div>
       </section>
+    }
+
     </>
   );
 }
+

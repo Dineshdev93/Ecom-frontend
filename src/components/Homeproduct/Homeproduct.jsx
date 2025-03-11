@@ -4,14 +4,16 @@ import Container from "react-bootstrap/esm/Container";
 import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
 import Card from "react-bootstrap/Card";
-export default function Homeproduct({ productdata, newarrival }) {
-  console.log("data", newarrival);
-
+import Spiner from '../../pages/Loader/Spiner'
+export default function Homeproduct({ productdata, newarrival ,loading }) {
+  // console.log("data", newarrival);
   return (
     <section className="home-product mt-3">
       {/* Products */}
       <Container>
         <h2>Products</h2>
+        {
+          loading ? <Spiner/> : 
         <Row>
           {productdata.map((element) => {
             return (
@@ -40,10 +42,13 @@ export default function Homeproduct({ productdata, newarrival }) {
             );
           })}
         </Row>
+        }
       </Container>
       {/* get latest products*/}
       <Container className="mt-4">
         <h2>New Arrivals</h2>
+        {
+          loading ? <Spiner/> : 
         <Row>
           {newarrival.slice(0, 4).map((item, index) => {
             return (
@@ -64,6 +69,7 @@ export default function Homeproduct({ productdata, newarrival }) {
             );
           })}
         </Row>
+        }
       </Container>
     </section>
   );

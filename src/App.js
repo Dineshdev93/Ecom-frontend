@@ -31,7 +31,6 @@ function App() {
         <Routes>
             {/* Admin Routes */}
             {/* use of protected routes */}
-            
           <Route path="/admin/*" element={<Protectroute />}>  
             <Route path="dashboard" element={<AdminCommonlayout><Admindashboard /></AdminCommonlayout>} />
             <Route path="products" element={<AdminCommonlayout><Adminproducts /></AdminCommonlayout>} />
