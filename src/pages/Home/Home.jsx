@@ -25,11 +25,13 @@ export default function Home() {
 
    const productdata = useSelector((state)=>state.products.getProductsbyadmin) 
    const newarrival = useSelector((state)=>state.products.Statenewarrivalproducts) 
+   const loading = useSelector((state)=>state.products.loading) 
+
     
   return (
     <div>
          <Homemain/>
-         <Homeproduct productdata={productdata} newarrival={newarrival}/>
+         <Homeproduct productdata={productdata} newarrival={newarrival} loading={loading}/>
          <Homecontact/>
     </div>
   )

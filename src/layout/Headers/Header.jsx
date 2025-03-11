@@ -28,12 +28,13 @@ export default function Header() {
        dispatch(Userverifyed());
       },[Loginuserdata])
       
+      // console.log(LoggeduserData);
       
       const logout = () =>{
         dispatch(Userlogout() );
         navigate('/')
         console.log(loading);  
-    }
+       }
     
   return (
     <header>
@@ -73,16 +74,16 @@ export default function Header() {
               </Dropdown.Toggle>
               <Dropdown.Menu>
                 {
-                  LoggeduserData.length <= 0  ?
+                  LoggeduserData.length < 0  ?
                     <Dropdown.Item href="/login">Log in</Dropdown.Item>
                   :
                   <>
-                    <Dropdown.Item href="/userprofile">Profile</Dropdown.Item>
+                    <NavLink to="/userprofile">Profile</NavLink>
                     <Dropdown.Item href="#" onClick={logout} >Log out</Dropdown.Item>
                   </> 
                 }
               </Dropdown.Menu>
-            </Dropdown>
+            </Dropdown>   
           </div>
         </div>
       </nav>
@@ -105,10 +106,10 @@ export default function Header() {
         </Offcanvas.Header>
         <Offcanvas.Body>
           <div className="p2">
-            <NavLink to={"#"}>Products</NavLink>
+            <NavLink to={"/products"}>Products</NavLink>
           </div>
           <div className="p2">
-            <NavLink to={"#"}>Sign in</NavLink>
+            <NavLink to={"/login"}>Sign in</NavLink>
           </div>
           <div className="badge-icon2 mt-3">
             <span>
