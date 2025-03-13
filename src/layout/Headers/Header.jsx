@@ -30,8 +30,10 @@ export default function Header() {
       
       // console.log(LoggeduserData);
       
+      
+
       const logout = () =>{
-        dispatch(Userlogout() );
+        dispatch(Userlogout());
         navigate('/')
         console.log(loading);  
        }
@@ -74,7 +76,7 @@ export default function Header() {
               </Dropdown.Toggle>
               <Dropdown.Menu>
                 {
-                  LoggeduserData.length < 0  ?
+                  LoggeduserData.length <= 0  ?
                     <Dropdown.Item href="/login">Log in</Dropdown.Item>
                   :
                   <>

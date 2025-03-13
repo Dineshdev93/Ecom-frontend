@@ -5,6 +5,7 @@ import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
 import Card from "react-bootstrap/Card";
 import Spiner from '../../pages/Loader/Spiner'
+import { NavLink } from "react-router-dom";
 export default function Homeproduct({ productdata, newarrival ,loading }) {
   // console.log("data", newarrival);
   return (
@@ -32,7 +33,7 @@ export default function Homeproduct({ productdata, newarrival ,loading }) {
                         />
                         <Card.Body className="d-flex flex-column">
                           <Card.Title>{data.productname}</Card.Title>
-                          <button className="buy-now mt-auto">Buy Now</button>
+                          <button className="buy-now mt-auto"><NavLink to={`productsdetail/${data._id}`}> Buy Now</NavLink></button>
                         </Card.Body>
                       </Card>
                     </Col>
