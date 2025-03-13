@@ -81,13 +81,16 @@ export const SendPasswordlink = createAsyncThunk("Send-link", async (data) => {
         const response = await ForgotpasswordResetlink(data);
             if(response.data === undefined){
                toast.error("This user is not exist !") 
+               console.log("sdfskhdfkjhsdf",response.data);
+        
             }else{
               console.log("response",response.data);
               toast("Email sent successfullly !")
             }
         } catch (error) {
             console.log("errr");
-            toast.error("This user is not exist !")
+            // toast.error("This user is not exist !")
+            // console.log("hello",response.data);
             throw error
         }
    });
