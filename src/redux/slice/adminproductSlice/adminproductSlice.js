@@ -2,10 +2,14 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import {
   addcategory,
   addProduct,
+  Addreview,
   deleteproduct,
+  DeleteReview,
   getallproducts,
   getcategorydata,
-  getNewarrivalproducts
+  getNewarrivalproducts,
+  GetReview,
+  getSingleproduct
 } from "../../../api/Productapi/Productapi";
 import { toast } from "react-toastify";
 
@@ -86,8 +90,6 @@ export const Newarrivalproducts = createAsyncThunk("new-arrival-products", async
   }
 });
 
-
-
 //  Slice for getall products
 export const deltedProduct = createAsyncThunk("delete-product", async (productid) => {
   try {
@@ -99,6 +101,51 @@ export const deltedProduct = createAsyncThunk("delete-product", async (productid
   }
 });
 
+// slice for get single product
+export const GetSingleproduct = createAsyncThunk("get-single-products", async (data) => {
+  try {
+    const response = await getSingleproduct(data);
+    return response.data;
+  } catch (error) {
+    return console.log(error);
+  }
+});
+
+
+// Review ki apis ki slice
+export const Add_review_Slice = createAsyncThunk("Addreview-by-user", async (data) => {
+  try {
+    const response = await Addreview(data);
+    // console.log("Review data",response.data);
+    return response.data;
+  } catch (error) {
+    return console.log(error);
+  }
+});
+
+export const Getting_Review = createAsyncThunk("Get-review-by-user", async (data) => {
+  try {
+    const response = await GetReview(data);
+    // console.log("Review data",response.data);
+    return response.data;
+  } catch (error) {
+    return console.log(error);
+  }
+});
+
+// Delete review based on review id
+export const Delete_Review = createAsyncThunk("Delete-review-by-user", async (data) => {
+  try {
+    const response = await  DeleteReview(data);
+    console.log("Deleting Review with ID:", data.reviewid)
+    return response.data;        
+  } catch (error) {
+    return console.log(error);
+  }
+});
+
+
+
 const adminproductsSlice = createSlice({
   name: "amdinproducts",
   initialState: {
@@ -108,6 +155,10 @@ const adminproductsSlice = createSlice({
     getProductsbyadmin: [],
     DeletedProducts : [],
     Statenewarrivalproducts : [],
+    SingleproductState : [] ,
+    ReviewData : [] ,
+    getReview_state : [],
+    DeletedReview : [],
     loading: false,
     error: null,
   },
@@ -122,7 +173,7 @@ const adminproductsSlice = createSlice({
         state.addcategory = [action.payload];
       })
       .addCase(addCategorybyadmin.rejected, (state) => {
-        state.loading = true;
+        state.loading = false;
       })
 
       // add cases for get category data
@@ -134,7 +185,7 @@ const adminproductsSlice = createSlice({
         state.loading = false;
       })
       .addCase(categorydata.rejected, (state) => {
-        state.loading = true;
+        state.loading = false;
       })
       // add cases for add product by admin
       .addCase(addProductbyadmin.pending, (state) => {
@@ -145,7 +196,7 @@ const adminproductsSlice = createSlice({
         state.loading = false;
       })
       .addCase(addProductbyadmin.rejected, (state) => {
-        state.loading = true;
+        state.loading = false;
       })
 
       //  get all products by added admin
@@ -157,7 +208,7 @@ const adminproductsSlice = createSlice({
         state.getProductsbyadmin = [action.payload];
       })
       .addCase(getAddedproducts.rejected, (state) => {
-        state.loading = true;
+        state.loading = false;
       })
 
       //  get latest products at home page
@@ -169,7 +220,7 @@ const adminproductsSlice = createSlice({
         state.Statenewarrivalproducts = action.payload;
       })
       .addCase(Newarrivalproducts.rejected, (state) => {
-        state.loading = true;
+        state.loading = false;
       })
 
       // delete product 
@@ -181,7 +232,56 @@ const adminproductsSlice = createSlice({
         state.DeletedProducts = action.payload;
       })
       .addCase(deltedProduct.rejected, (state) => {
+        state.loading = false;
+      })
+
+      // get single product
+      .addCase(GetSingleproduct.pending, (state) => {
         state.loading = true;
+      })
+      .addCase(GetSingleproduct.fulfilled, (state, action) => {
+        state.loading = false;
+        state.SingleproductState = [action.payload];
+      })
+      .addCase(GetSingleproduct.rejected, (state) => {
+        state.loading = false;
+      })
+
+
+      // Add review by their  product
+      .addCase(Add_review_Slice.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(Add_review_Slice.fulfilled, (state, action) => {
+        state.loading = false;
+        state.SingleproductState = [action.payload];
+      })
+      .addCase(Add_review_Slice.rejected, (state) => {
+        state.loading = false;
+      })
+
+      // Get review by their  product
+      .addCase(Getting_Review.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(Getting_Review.fulfilled, (state, action) => {
+        state.loading = false;
+        state.getReview_state = action.payload;
+      })
+      .addCase(Getting_Review.rejected, (state) => {
+        state.loading = false;
+      })
+
+      // Get review by their  product
+      .addCase(Delete_Review.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(Delete_Review.fulfilled, (state, action) => {
+        state.loading = false;
+        state.DeletedReview = action.payload;
+      })
+      .addCase(Delete_Review.rejected, (state) => {
+        state.loading = false;
       });
   },
 });
