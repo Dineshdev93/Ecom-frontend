@@ -26,10 +26,10 @@ export default function Productmainpage({productdata}) {
            </Col>
         </Row>
         <Row>
-          {productdata[0].getAllProducts.map((element, index) => {
+          {productdata[0].getAllProducts?.map((element, index) => {
             return (
               <>
-                <Col md={4} className="mb-3">
+                <Col md={4} className="mb-3"key={index}>
                   <Card style={{ width: "100%", height: "100%" }}>
                     <Card.Img variant="top" src={`${element.productimage}`} />
                     <Card.Body>
