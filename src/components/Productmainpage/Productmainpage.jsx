@@ -5,7 +5,9 @@ import Col from "react-bootstrap/esm/Col";
 import Card from "react-bootstrap/Card";
 import "../Homeproduct/homeproduct.scss";
 import Select from 'react-select'
-export default function Productmainpage() {
+export default function Productmainpage({productdata}) {
+
+  
   const data = [1, 2, 3, 4, 5, 6, 7, 8];
   const options = [
     { value: 'chocolate', label: 'Chocolate' },
@@ -24,12 +26,12 @@ export default function Productmainpage() {
            </Col>
         </Row>
         <Row>
-          {data.map((element, index) => {
+          {productdata[0].getAllProducts.map((element, index) => {
             return (
               <>
                 <Col md={4} className="mb-3">
                   <Card style={{ width: "100%", height: "100%" }}>
-                    <Card.Img variant="top" src="./shoes.png" />
+                    <Card.Img variant="top" src={`${element.productimage}`} />
                     <Card.Body>
                       <Card.Title>Nike Shoes</Card.Title>
                       <button className="buy-now">Buy Now</button>
