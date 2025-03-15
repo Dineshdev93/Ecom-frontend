@@ -190,12 +190,12 @@ const ProductDetailsMain = (SingleproductState) => {
         </Container>
       </section>
 
-      {/*Customer Review Section */}        
+      {/*Customer Review Section */}
       <section className="review-section mt-5">
         <Container>
           <div className="d-flex justify-content-between align-items-center">
             <div>
-              <h2>Customer Review</h2> 
+              <h2>Customer Review</h2>
             </div>
             <div className="review-button">
               <button onClick={handleShow}>Write Review</button>
@@ -290,7 +290,7 @@ const ProductDetailsMain = (SingleproductState) => {
                               </div>
                             </p>
                           </Card.Text>
-                          {LoggeduserData[0]._id === item.userid ? (
+                          {LoggeduserData[0]?._id === item.userid ? (
                             <Button
                               variant="none"
                               onClick={() => deleteReview(item._id)}
