@@ -7,19 +7,20 @@ import { useDispatch, useSelector } from 'react-redux';
 import "./admin.scss";
 import Select from 'react-select'
 import { deltedProduct, getAddedproducts } from '../../redux/slice/adminproductSlice/adminproductSlice';
+import Spiner from '../Loader/Spiner';
 export default function Adminproducts() {
   
-  // const options = [
-  //   { value: 'chocolate', label: 'Chocolate' },
-  //   { value: 'strawberry', label: 'Strawberry' },
-  //   { value: 'vanilla', label: 'Vanilla' }
-  // ]
+  const options = [
+    { value: 'chocolate', label: 'Chocolate' },
+    { value: 'strawberry', label: 'Strawberry' },
+    { value: 'vanilla', label: 'Vanilla' }
+  ]
   // For pagination functionlity
   const [page ,setPage] = useState(1)
   const [pagecount , setPagecount] = useState(0)
   //  get response by redux slice
   const productdata = useSelector((state)=>state.products.getProductsbyadmin) 
-  
+  const{loading} = useSelector((state)=>state.products)
     
     
   //  disptach function
@@ -59,16 +60,16 @@ export default function Adminproducts() {
    <>
     <div className="admin-get-products">
       <Container className="mt-4">
-        {/* <Row>
+        <Row>
            <Col md={8}>
               <h2>All Products</h2>
            </Col>
            <Col md={4}>
                <Select options={options} placeholder="Filter by Category"/>
            </Col>
-        </Row> */}
+        </Row>
         <Row className='childs gap-5'>
-          {productdata.map((element) => {
+          { loading ? <Spiner/> :  productdata.map((element) => {
             return (
               <>
               {
