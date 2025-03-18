@@ -18,7 +18,7 @@ export const addProduct = async (data ,categoryid , header) => {
 
 //  get all products
 export const getallproducts = async(data , header )=>{
-      return await commonrequest('GET', `${BASE_URL}/product/api/getProducts?page=${data.page}`,"",header , 'admin' )
+      return await commonrequest('GET', `${BASE_URL}/product/api/getProducts?page=${data.page}`,null,header , 'admin' )
 }
 
 // getSingle products
