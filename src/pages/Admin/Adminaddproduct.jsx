@@ -35,7 +35,7 @@ export default function Adminaddproduct() {
       }else{
          setProductimage(file)
       }
-  }
+  } 
 
   useEffect(()=>{
       let arr = []

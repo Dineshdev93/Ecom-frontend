@@ -3,18 +3,18 @@ import { NavLink ,useNavigate} from "react-router-dom";
 import "./header.scss";
 import Dropdown from "react-bootstrap/Dropdown";
 import { useState } from "react";
-
 import { useEffect } from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import {useSelector , useDispatch}  from 'react-redux'
 import { Userlogout, Userverifyed } from "../../redux/slice/userAuthSlice/UserSlice";
+import { Get_Cart_Data } from "../../redux/slice/CartSlice/cartSlice";
 
 export default function Header() {
   const [show, setShow] = useState(false);
-
+  
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
+  
   
 
   // User verified
@@ -27,15 +27,23 @@ export default function Header() {
     useEffect(()=>{
        dispatch(Userverifyed());
       },[Loginuserdata])
-      
-      // console.log(LoggeduserData);
-      
-      
 
+
+      const cartData = useSelector((state)=>state.cart.get_cart_data)
+      const {cart_data_post} = useSelector((state)=>state.cart)
+      // Call cart data api
+      useEffect(()=>{
+          dispatch(Get_Cart_Data());
+          // console.log("Again call");
+          
+       },[LoggeduserData, cart_data_post])
+      
       const logout = () =>{
-        dispatch(Userlogout());
-        navigate('/')
-        console.log(loading);  
+        dispatch(Userlogout()).then((res)=>{
+                localStorage.removeItem("user-token");
+                navigate('/login')
+        })
+      
        }
     
   return (
@@ -48,15 +56,15 @@ export default function Header() {
         </div>
         <div className="right">
           <div className="hamburger" onClick={handleShow}>
-            <i class="fa-solid fa-bars"></i>
+            <i class="fa-bars fa-solid"></i>
           </div>
           <div className="p1">
             <NavLink to={"/products"}>Products</NavLink>
           </div>
           <div className="badge-icon">
             <NavLink to={'/cart'}>
-              <i class="fa-solid fa-cart-shopping counts" data-count={0}></i>
-              <span className="badge">0</span>
+              <i class="counts fa-cart-shopping fa-solid" data-count={2}></i>
+              <span className="badge">{LoggeduserData?.length > 0 ?  cartData?.length : 0}</span>
             </NavLink>
           </div>
           <div className="dropdown-basic">
@@ -64,7 +72,7 @@ export default function Header() {
               <Dropdown.Toggle id="dropdown-basic">
               
                 {
-                  LoggeduserData.length > 0  ? LoggeduserData.map((item)=>{
+                  LoggeduserData?.length > 0  ? LoggeduserData.map((item)=>{
                     return (
                       <>
                          <img src={`${item.userprofile}`} alt="logo" width={50} />
@@ -76,7 +84,7 @@ export default function Header() {
               </Dropdown.Toggle>
               <Dropdown.Menu>
                 {
-                  LoggeduserData.length <= 0  ?
+                  LoggeduserData?.length <=  0  ?
                     <Dropdown.Item href="/login">Log in</Dropdown.Item>
                   :
                   <>
@@ -116,7 +124,7 @@ export default function Header() {
           <div className="badge-icon2 mt-3">
             <span>
               <i
-                class="fa-solid fa-cart-shopping counts"
+                class="counts fa-cart-shopping fa-solid"
                 style={{ color: "white" }}
                 data-count={0}
               ></i>

@@ -1,7 +1,7 @@
 import React from 'react'
 import Productmainpage from '../../components/Productmainpage/Productmainpage'
 import { useDispatch,useSelector } from 'react-redux'
-import { getAddedproducts } from '../../redux/slice/adminproductSlice/adminproductSlice'
+import { categorydata, getAddedproducts } from '../../redux/slice/adminproductSlice/adminproductSlice'
 import { useState,useEffect } from 'react'
 import Container from "react-bootstrap/esm/Container";
 import Row from "react-bootstrap/esm/Row";
@@ -16,7 +16,9 @@ export default function Productpage() {
     //  get response by redux slice
     const productdata = useSelector((state)=>state.products.getProductsbyadmin) 
     const {loading} = useSelector((state)=>state.products) 
-    
+    const category_data = useSelector((state) => state.products.category_data);
+    const [categoryState ,setCategorystate] = useState([])
+    const [selectedCategory , setSelectedCategory ] = useState("")
       
       
     //  disptach function
@@ -24,6 +26,7 @@ export default function Productpage() {
   
     const productapi = () =>{  
       const data = {
+         selectedCategory , 
           page
       }
       dispatch( getAddedproducts(data)).then((res)=>{
@@ -32,7 +35,7 @@ export default function Productpage() {
     }
     useEffect(()=>{
       productapi()
-    },[page])
+    },[page ,selectedCategory])
   
     const handlenextpage = () =>{
       if (page < pagecount) {
@@ -45,15 +48,25 @@ export default function Productpage() {
         }
     }
   
-  
-
-     const data = [1, 2, 3, 4, 5, 6, 7, 8];
-
-     const options = [
-       { value: 'chocolate', label: 'Chocolate' },
-       { value: 'strawberry', label: 'Strawberry' },
-       { value: 'vanilla', label: 'Vanilla' }
-     ]
+   
+    // get category data p[rocess]
+     
+    useEffect(() => {
+      dispatch(categorydata());
+    }, []);
+    useEffect(()=>{
+          let arr = [{value : "all" , label : "all"}]
+          for(let i = 0; i<category_data.length ; i++){
+            arr.push({
+              value: category_data[i]._id,
+              label: category_data[i].categoryname,
+            });
+          }
+          setCategorystate(arr)
+      },[category_data])
+     
+      
+     
 
   return (
     <div className="home-product">
@@ -63,7 +76,7 @@ export default function Productpage() {
               <h2>All Products</h2>
            </Col>
            <Col md={4}>
-               <Select options={options} placeholder="Filter by Category"/>
+               <Select options={categoryState} onChange={(e)=>setSelectedCategory(e.value)} placeholder="Filter by Category"/>
            </Col>
         </Row>
         <Row className='childs gap-0'>

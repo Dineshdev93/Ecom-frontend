@@ -35,7 +35,7 @@ export const Loginuser = createAsyncThunk(
       if (response.status === 200) {
         localStorage.setItem("user-token", response.data.token);
         toast.success("User Login Successfully");
-        // console.log("data" , response.data);
+        console.log("data" , response.data);
         return response.data;
       } else {
         return thunkApi.rejectWithValue();
@@ -69,7 +69,6 @@ export const Userlogout = createAsyncThunk("user-logout", async () => {
     const response = await userLogout();
     if (response.status === 200) {
       toast.success("User Logout Successfully");
-      localStorage.removeItem("user-token");
     }
   } catch (error) {
     toast.error("Failed");

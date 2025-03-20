@@ -17,6 +17,7 @@ import {
   Getting_Review,
 } from "../../redux/slice/adminproductSlice/adminproductSlice";
 import { toast } from "react-toastify";
+import { AddtoCart } from "../../redux/slice/CartSlice/cartSlice";
 
 const ProductDetailsMain = (SingleproductState) => {
   const productdata = [SingleproductState];
@@ -109,6 +110,15 @@ const ProductDetailsMain = (SingleproductState) => {
     dispatch(Getting_Review(productidObj));
   }, [DeletedReview]);
 
+
+  //  addtocart function
+  const handelincrement = (id) =>{
+    const data = {
+        id
+    }
+     dispatch(AddtoCart(data))
+  }
+
   return (
     <>
       <section className="product-details">
@@ -179,7 +189,7 @@ const ProductDetailsMain = (SingleproductState) => {
                       About The Item
                     </h3>
                     <p className="product-details__about">{item.description}</p>
-                    <button className="product-details__add-to-cart ">
+                    <button className="product-details__add-to-cart"onClick={()=>handelincrement(item._id)}>
                       Add to Cart
                     </button>
                   </Col>
