@@ -34,8 +34,7 @@ export default function Header() {
       // Call cart data api
       useEffect(()=>{
           dispatch(Get_Cart_Data());
-          // console.log("Again call");
-          
+          // console.log("Again call"); 
        },[LoggeduserData, cart_data_post])
       
       const logout = () =>{
@@ -43,7 +42,6 @@ export default function Header() {
                 localStorage.removeItem("user-token");
                 navigate('/login')
         })
-      
        }
     
   return (

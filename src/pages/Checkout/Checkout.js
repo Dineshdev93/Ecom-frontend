@@ -1,7 +1,11 @@
 import React from "react";
 import Card from "react-bootstrap/Card";
 import {Container,Row,Col} from "react-bootstrap";
+import { useLocation } from "react-router-dom";
 export default function Checkout() {
+  const location = useLocation()
+  console.log("checkout data" , location);
+  
   return (
     <section>
         {/* Shipping details */}
