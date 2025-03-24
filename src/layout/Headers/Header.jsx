@@ -45,8 +45,8 @@ export default function Header() {
        }
     
   return (
-    <header>
-      <nav className="container mt-3">
+    <header className="mb-4">
+      <nav className="container ">
         <div className="left">
           <NavLink to={"/"}>
             <img src="https://i.postimg.cc/TP6JjSTt/logo.webp" alt="logo" />

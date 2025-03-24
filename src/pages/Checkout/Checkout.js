@@ -3,18 +3,18 @@ import Card from "react-bootstrap/Card";
 import {Container,Row,Col} from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 export default function Checkout() {
-  const location = useLocation()
-  console.log("checkout data" , location);
+  const {state} = useLocation()
+  console.log("checkout data" , state);
   
   return (
-    <section>
+    <section style={{marginTop:"7rem"}}>
         {/* Shipping details */}
       <Container className="mt-4">
         <Card style={{ width: "22rem" }}>
           <Card.Body>
             <Card.Title>Shipping Address</Card.Title>
             <Card.Text>
-                <span style={{fontWeight:"bold"}}> Address </span> 101 street , shyam nagar
+                <span style={{fontWeight:"bold"}}> Address </span> &nbsp; {state.address}
             </Card.Text>
             <Card.Text>
                 <span style={{fontWeight:"bold"}}> State </span> Ulasnagar

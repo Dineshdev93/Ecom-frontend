@@ -20,7 +20,7 @@ export default function Homeproduct({ productdata, newarrival, loading }) {
             {productdata.map((element) => {
               return (
                 <>
-                  {element.getAllProducts.slice(0, -2).map((data, key) => {
+                  {element.getAllProducts.slice(0, -4).map((data, key) => {
                     return (
                       <Col key={key} md={3} className="mb-3 d-flex">
                         <Card

@@ -1,12 +1,14 @@
 .home-container {
-  background: url("../../../public/banner.png");
+  background: url("../../../public/ecom.jpg");
   background-position: center;
   background-size: cover;
+  background-repeat: no-repeat;
   min-height: 80vh;
+  width: 100%;
 
   .summer-text {
-    color: #ff3d00;
-    font-size: 22px;
+    color: #c8c5c4;
+    font-size: 28px;
     letter-spacing: 4px;
     line-height: 2;
     font-weight: 500;
@@ -14,23 +16,29 @@
   .collection {
     letter-spacing: 4px;
     font-weight: 500;
+    color: wheat;
   }
   .stay-cool{
-    color: gray;
+    color: #c8c5c4;
     font-weight: 500;
+    letter-spacing: 1px;
+    line-height: 1.7;
   }
   .shop-now{
-    background-color: black;
+    background-color: #d11525;
     padding: 10px;
     font-size: 22px;
     width: 65%;
     color: white;
     font-weight: 500;
     letter-spacing: 1px;
+    border: none;
+    border-radius: 10px;
   }
   .shop-now:hover{
-     background-color: #7b6ddc   !important;
+     background-color: wheat   !important;
      border-radius: 10px;
+     color: black;
      border: 1px solid gray;
   }
 }

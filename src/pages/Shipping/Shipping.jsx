@@ -9,6 +9,9 @@ export default function Shipping() {
 
   const location = useLocation()
 
+  console.log(location);
+  
+
   const [inpval, setInpval] = useState({
     mobile: "",
     city: "",
@@ -95,7 +98,7 @@ export default function Shipping() {
 
   return (
     <div>
-      <section className="container signup_login_form_caontainer mb-5">
+      <section className="container signup_login_form_caontainer mb-5 mt-5">
         <div className="row justify-content-center">
           <div className="col-md-6 register_user">
             <h1 className="text-center mt-3">Shipping Address</h1>

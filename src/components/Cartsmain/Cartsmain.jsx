@@ -37,9 +37,7 @@ export default function Cartsmain({ cartdata, loading }) {
               {cartdata?.length > 0 ? `Your Shopping Cart (${cartdata.length})` : "Your Cart is Empty"}
             </h3>
 
-            {loading ? (
-              <Spiner />
-            ) : cartdata?.length === 0 ? (
+            { cartdata?.length === 0 ? (
               <div className="shadow empty-cart">
                 <img src="/empty-cart.avif" alt="Empty Cart" className="empty-cart-img" />
                 <p className="text-center empty-cart-text">Looks like you haven't added anything yet.</p>
