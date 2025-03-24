@@ -121,7 +121,7 @@ const ProductDetailsMain = (SingleproductState) => {
 
   return (
     <>
-      <section className="product-details">
+      <section className="product-details" style={{marginTop:"7rem"}}>
         <Container>
           <Row className="justify-content-center">
             <Col xs={12}>

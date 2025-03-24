@@ -20,3 +20,14 @@
     outline: none;
     padding: 10px;
 }
+.product-details__image img {
+    width: 100%;
+    // height: 50%;
+  }
+  
+  @media (max-width: 768px) {
+    .product-details__image img {
+      width: 100%;
+    }
+  }
+  
