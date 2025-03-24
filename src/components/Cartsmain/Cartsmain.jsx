@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import Spiner from "../../pages/Loader/Spiner";
+
 import {
   AddtoCart,
   Delete_Single_Product,
@@ -62,10 +62,10 @@ export default function Cartsmain({ cartdata, loading }) {
                         <Button variant="outline-danger" size="sm" onClick={() => removeWholeItem(item.productid)}>
                           Remove
                         </Button>
-                        <Button variant="outline-secondary" size="sm">Move to Wishlist</Button>
+                        {/* <Button variant="outline-secondary" size="sm">Move to Wishlist</Button> */}
                       </div>
                     </Col>
-                    <Col md={4} className="d-flex flex-column align-items-center cart-item-controls">
+                    <Col md={4} className="d-flex flex-column justify-content-center align-items-center cart-item-controls">
                       <div className="d-flex align-items-center gap-2 quantity-controls">
                         <Button size="sm" variant="outline-dark" onClick={() => handleDecrement(item.productid)}>-</Button>
                         <span className="fw-bold">{item.quantity}</span>
