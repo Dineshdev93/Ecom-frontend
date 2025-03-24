@@ -3,7 +3,9 @@ import "./homemain.scss";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import {useNavigate}  from 'react-router-dom'
 export default function Homemain() {
+  const navigate = useNavigate()
   return (
     <section className="home-container">
       <Container>
@@ -19,7 +21,7 @@ export default function Homemain() {
               vibrant colors, and trendy designs perfect for the sunny days
               ahead. ☀️🌿"
             </p>
-            <button className="shop-now mt-5">
+            <button className="shop-now mt-5" onClick={()=>navigate('/products')}>
                  Shop Now
             </button>
           </Col>

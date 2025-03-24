@@ -14,7 +14,7 @@ export default function Carts() {
       
     
   return (
-    <div>
+    <div style={{marginTop:"7rem"}}>
          <Cartsmain  cartdata={get_cart_data} loading={loading}/>
     </div>
   )
