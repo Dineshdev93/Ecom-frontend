@@ -26,3 +26,16 @@
         padding: 7px;
         border-radius: 5px;
 }}
+
+@media(max-width : 768px){
+      .cart-item-details{
+        // display: flex;
+        text-align: center;
+      }  
+      .cart-actions{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 1.5rem;
+      }
+}

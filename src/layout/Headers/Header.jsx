@@ -117,16 +117,25 @@ export default function Header() {
             <NavLink to={"/products"}>Products</NavLink>
           </div>
           <div className="p2">
-            <NavLink to={"/login"}>Sign in</NavLink>
+            {/* <NavLink to={"/login"}>Sign in</NavLink> */}
+            {
+                  LoggeduserData?.length <=  0  ?
+                    <Dropdown.Item href="/login">Log in</Dropdown.Item>
+                  :
+                  <>
+                    <NavLink to="/userprofile">Profile</NavLink>
+                    <Dropdown.Item href="#" onClick={logout} >Log out</Dropdown.Item>
+                  </> 
+                }
           </div>
-          <div className="badge-icon2 mt-3">
-            <span>
+          <div className="badge-icon2 mt-3" >
+            <span onClick={()=>navigate('/cart')}>
               <i
                 class="counts fa-cart-shopping fa-solid"
                 style={{ color: "white" }}
                 data-count={0}
               ></i>
-              <span className="badge">0</span>
+              <span className="badge">{LoggeduserData?.length > 0 ?  cartData?.length : 0}</span>
             </span>
           </div>
         </Offcanvas.Body>
