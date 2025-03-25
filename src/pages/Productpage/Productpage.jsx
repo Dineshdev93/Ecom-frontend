@@ -27,6 +27,7 @@ export default function Productpage() {
   //  disptach function
   const dispatch = useDispatch();
   const navigate = useNavigate()
+  
   const productapi = () => {
     const data = {
       selectedCategory,

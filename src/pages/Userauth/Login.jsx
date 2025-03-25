@@ -61,7 +61,7 @@ export default function Login() {
       loading ? <Spiner/> : 
       <section className="container signup_login_form_caontainer mb-5">
         <div className="row justify-content-center">
-          <div className="col-md-7  register_user">
+          <div className="col-md-7  register_user" style={{marginTop:"7rem"}}>
             <h2 className="text-center">Welcome back & Sign in!</h2>
             {/* <div class="divider">
             <span style={{ fontSize: "20px" }}>or</span>
@@ -74,7 +74,7 @@ export default function Login() {
               <span>Log in with Google </span>
             </div>
           </div> */}
-            <form>
+            <form >
               <div className="mt-3">
                 <label for="exampleInputEmail1" className="form-label">
                   Email address

@@ -1,9 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import "./homecontact.scss";
 import Container from "react-bootstrap/esm/Container";
 import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
+import { userContact } from "../../redux/slice/userAuthSlice/UserSlice";
+import { useDispatch  } from "react-redux";
+import { toast } from "react-toastify";
 export default function Homecontact() {
+
+    const [inpval , setInpval] = useState({
+      name : "" , 
+      email : "" , 
+      message : ""
+    })
+
+    const handlechange = (e) =>{
+         const{name , value} = e.target ; 
+         setInpval({
+            ...inpval, [name] : value
+         })
+    }
+      
+    const dispatch = useDispatch()
+    const handleSubmit = (e) => {
+      e.preventDefault()
+        dispatch(userContact(inpval)).then((res)=>{
+              console.log(res.payload);
+              setInpval({ name : ""  , email : "" , message : ""})
+              toast.success("Sent Successfully !")
+        })          
+    }
+      
   return (
     <>
       <div style={{ width: "100%" }}>
@@ -50,16 +77,16 @@ export default function Homecontact() {
                 <form action="" className="contact-us-form">
                     <Row>
                          <Col md={6} className="mb-3" >
-                            <input type="text" name="" id="" placeholder="Name"/>
+                            <input type="text" name="name" value={inpval.name} id="" placeholder="Name" onChange={handlechange}/>
                          </Col>
                          <Col md={6}>
-                             <input type="email" name="" id="" placeholder="Email" />
+                             <input type="email" name="email" value={inpval.email} id="" placeholder="Email" onChange={handlechange} />
                          </Col>
                          <Col md={12} className="mt-4">
-                             <textarea name="" id="" cols="30" rows="10" placeholder="Mesaage"></textarea>
+                             <textarea name="message" id="" value={inpval.message} cols="30" rows="10" onChange={handlechange} placeholder="Mesaage"></textarea>
                          </Col>
                          <Col md={12} className="mt-4">
-                             <button>Send Mesage</button>
+                             <button onClick={handleSubmit}>Send Mesage</button>
                          </Col>
                     </Row>
                 </form>
