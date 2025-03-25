@@ -9,8 +9,6 @@ export default function Shipping() {
 
   const location = useLocation()
 
-  console.log(location);
-  
 
   const [inpval, setInpval] = useState({
     mobile: "",
@@ -24,8 +22,6 @@ export default function Shipping() {
     setInpval({ ...inpval, [name]: value });
   };
 
-
-
   // Country and State Selection
   const [country, setCountry] = useState([]);
   const [countryCode, setCountryCode] = useState("");
@@ -33,7 +29,7 @@ export default function Shipping() {
   const [finalstate , setFinalState] = useState()
   const navigate = useNavigate()
   
-  
+
 
   // Fetch all countries with flags
   useEffect(() => {
@@ -57,7 +53,7 @@ export default function Shipping() {
     const statedata =  State.getStatesOfCountry(countryCode);
     
     if(countryCode){
-       console.log("states" , statedata);
+       
        let statesArr = [] ;
        for(let i = 0 ; i<statedata?.length ; i++){
           const storedata = {value : statedata[i].isoCode , label : statedata[i].name}
@@ -67,15 +63,15 @@ export default function Shipping() {
     }
   }, [countryCode]);
 
-    
      // handle submit
  
-     const {mobile , city , pincode , address} = inpval ; 
+     const {mobile , city , pincode , address} = inpval; 
       const data = {
            mobile,
            city , 
            pincode , 
-           address , 
+           address ,
+           userState : finalstate, 
            price : location.state,
            shippinprice : 40 , 
            totalprice : location.state+40
@@ -95,7 +91,6 @@ export default function Shipping() {
            navigate('/checkout',{state:data})
        }
     }
-
   return (
     <div>
       <section className="container signup_login_form_caontainer mb-5 mt-5">

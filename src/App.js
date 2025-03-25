@@ -20,6 +20,7 @@ import Adminproducts from "./pages/Admin/Adminproducts";
 import Adminaddproduct from "./pages/Admin/Adminaddproduct";
 import ProductCategory from "./pages/Admin/ProductCategory";
 import Orders from "./pages/Admin/Orders";
+import Payment from "./pages/Payment/Payment";
 import { Slide, ToastContainer} from 'react-toastify';
 import Protectroute from "./components/Protectedroute/Protectroute";
 import { UserPrivateroute } from "./components/Protectedroute/UserprivateRoute";
@@ -53,6 +54,7 @@ function App() {
           <Route path="/userprofile" element={<Layout><Userprofile /></Layout>} />
           <Route path="/shipping" element={<Layout><Shipping/></Layout>} />
           <Route path="/checkout" element={<Layout><Checkout/></Layout>} />
+          <Route path="/payment" element={<Layout><Payment/></Layout>} />
           <Route path="/user-orders" element={<Layout><Userorders/></Layout>}/> 
            </Route>
            

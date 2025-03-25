@@ -28,3 +28,13 @@ export const ForgotpasswordVerify = async(data,header)=>{
 export const ResetpasswordVerify = async(data,header)=>{
      return await commonrequest('PUT' , `${BASE_URL}/userauth/api/resetpassword/${data.id}/${data.token}` , data , header , "")
 }
+
+//  getAll user
+export const getAlluser = async(data,header)=>{
+     return await commonrequest('GET' , `${BASE_URL}/userauth/api/getAlluser?page=${data.page}` , null , header , "admin")
+}
+
+//  getAll user
+export const contactUser = async(data,header)=>{
+     return await commonrequest('POST' , `${BASE_URL}/userauth/api/usercontact` , data , header , "")
+}

@@ -1,7 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import {
+  contactUser,
   ForgotpasswordResetlink,
   ForgotpasswordVerify,
+  getAlluser,
   ResetpasswordVerify,
   userLogin,
   userLogout,
@@ -122,6 +124,26 @@ export const Resetpass = createAsyncThunk("Reset-password", async (data) => {
         }
 });
 
+export const GetAllUser = createAsyncThunk("get-all-user", async (data) => {
+  try {
+        const response = await getAlluser(data)
+           return response.data; 
+        } catch (error) {
+            console.log("error",error);
+            throw error
+        }
+});
+
+export const userContact = createAsyncThunk("user-contact", async (data) => {
+  try {
+        const response = await contactUser(data)
+           return response.data; 
+        } catch (error) {
+            console.log("error",error);
+            throw error
+        }
+});
+
 const UserAuthSlice = createSlice({
   name: "userSlice",
   initialState: {
@@ -131,7 +153,9 @@ const UserAuthSlice = createSlice({
     LogOutUser: [],
     Forgotpassword : [],
     Forgotpasswordverifystate : [],
-    Resetpassword : [] , 
+    Resetpassword : [] ,
+    userData : [] , 
+    Contacttouser : [] ,
     loading: false,
   },
   extraReducers: (builder) => {
@@ -219,6 +243,31 @@ const UserAuthSlice = createSlice({
        .addCase(Resetpass.rejected , (state)=>{
        state.loading = false
       })
+      
+      // Get all user for admin
+      .addCase(GetAllUser.pending ,  (state)=>{
+        state.loading = true ;
+      })
+      .addCase(GetAllUser.fulfilled , (state , action)=>{
+       state.loading = false 
+       state.userData = [action.payload]
+      })
+       .addCase(GetAllUser.rejected , (state)=>{
+       state.loading = false
+      })
+
+      // contact by user 
+      .addCase(userContact.pending ,  (state)=>{
+        state.loading = true ;
+      })
+      .addCase(userContact.fulfilled , (state , action)=>{
+       state.loading = false 
+       state.Contacttouser = [action.payload]
+      })
+       .addCase(userContact.rejected , (state)=>{
+       state.loading = false
+      })
+
 
   },
 });

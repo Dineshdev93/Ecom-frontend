@@ -19,7 +19,7 @@ export default function Header() {
 
   // User verified
   
-  const {LoggeduserData ,Loginuserdata, loading} = useSelector((state)=>state.userauth)
+  const {LoggeduserData ,Loginuserdata} = useSelector((state)=>state.userauth)
   const navigate = useNavigate();
   
     const dispatch = useDispatch();
