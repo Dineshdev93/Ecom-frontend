@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import {
   contactUser,
+  deleteuserapi,
   ForgotpasswordResetlink,
   ForgotpasswordVerify,
   getAlluser,
@@ -124,6 +125,7 @@ export const Resetpass = createAsyncThunk("Reset-password", async (data) => {
         }
 });
 
+// on admin dashboard
 export const GetAllUser = createAsyncThunk("get-all-user", async (data) => {
   try {
         const response = await getAlluser(data)
@@ -133,6 +135,19 @@ export const GetAllUser = createAsyncThunk("get-all-user", async (data) => {
             throw error
         }
 });
+
+  //  on admin dashboard delete user
+  export const DeleteUSer = createAsyncThunk("deleteuser", async (data) => {
+    try {
+          const response = await deleteuserapi(data)
+             console.log("response" , response.data);
+             
+             return response.data; 
+          } catch (error) {
+              console.log("error",error);
+              throw error
+          }
+  });  
 
 export const userContact = createAsyncThunk("user-contact", async (data) => {
   try {
@@ -156,6 +171,7 @@ const UserAuthSlice = createSlice({
     Resetpassword : [] ,
     userData : [] , 
     Contacttouser : [] ,
+    delUserState : [] , 
     loading: false,
   },
   extraReducers: (builder) => {
@@ -255,6 +271,19 @@ const UserAuthSlice = createSlice({
        .addCase(GetAllUser.rejected , (state)=>{
        state.loading = false
       })
+
+      // Delete user by admin
+      .addCase(DeleteUSer.pending ,  (state)=>{
+        state.loading = true ;
+      })
+      .addCase(DeleteUSer.fulfilled , (state , action)=>{
+       state.loading = false 
+       state.delUserState = action.payload
+      })
+       .addCase(DeleteUSer.rejected , (state)=>{
+       state.loading = false
+      })
+
 
       // contact by user 
       .addCase(userContact.pending ,  (state)=>{
