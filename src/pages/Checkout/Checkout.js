@@ -17,6 +17,7 @@ export default function Checkout() {
        ...state,
        orderItems :  cartData
    } 
+  console.log(finaldata);
   
      const handlePayment = () => {
          navigate('/payment' , {state : finaldata})
@@ -36,7 +37,7 @@ export default function Checkout() {
                 <strong>Address:</strong> {state.address}
               </Card.Text>
               <Card.Text>
-                <strong>State:</strong> {state.userState}
+                <strong>State:</strong> {state.state}
               </Card.Text>
               <Card.Text>
                 <strong>City:</strong> {state.city}
@@ -48,10 +49,10 @@ export default function Checkout() {
                 <strong>Mobile:</strong> {state.mobile}
               </Card.Text>
               <Card.Text>
-                <strong>Shipping Price:</strong> Rs. {state.shippingprice}
+                <strong>Shipping Price:</strong> Rs. {state.shippinPrice}
               </Card.Text>
               <Card.Text>
-                <strong>Total:</strong> Rs. {state.totalprice}
+                <strong>Total:</strong> Rs. {state.totalPrice}
               </Card.Text>
             </Card.Body>
           </Card>

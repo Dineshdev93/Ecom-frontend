@@ -71,10 +71,10 @@ export default function Shipping() {
            city , 
            pincode , 
            address ,
-           userState : finalstate, 
-           price : location.state,
-           shippinprice : 40 , 
-           totalprice : location.state+40
+           state : finalstate,  
+           itemsPrice : location.state,
+           shippinPrice : 40 , 
+           totalPrice : location.state+40
       }
 
     const handleSubmit = (e) =>{

@@ -29,12 +29,17 @@ export const ResetpasswordVerify = async(data,header)=>{
      return await commonrequest('PUT' , `${BASE_URL}/userauth/api/resetpassword/${data.id}/${data.token}` , data , header , "")
 }
 
-//  getAll user
+//  getAll user by  admin
 export const getAlluser = async(data,header)=>{
      return await commonrequest('GET' , `${BASE_URL}/userauth/api/getAlluser?page=${data.page}` , null , header , "admin")
 }
 
-//  getAll user
+// Delete user by admin
+export const deleteuserapi = async(data,header)=>{
+     return await commonrequest('DELETE' , `${BASE_URL}/userauth/api/userdelete/${data.userid}` , {} , header , "admin")
+}
+
+// Contact by user
 export const contactUser = async(data,header)=>{
      return await commonrequest('POST' , `${BASE_URL}/userauth/api/usercontact` , data , header , "")
 }
