@@ -71,7 +71,8 @@ export default function Shipping() {
            city , 
            pincode , 
            address ,
-           state : finalstate,  
+           state : finalstate,
+           country :   countryCode,
            itemsPrice : location.state,
            shippinPrice : 40 , 
            totalPrice : location.state+40

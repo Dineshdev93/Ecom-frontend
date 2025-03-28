@@ -20,6 +20,9 @@ export default function Header() {
   // User verified
   
   const {LoggeduserData ,Loginuserdata} = useSelector((state)=>state.userauth)
+  const {removecartdata}  = useSelector((state)=>state.userauth)    
+  
+   
   const navigate = useNavigate();
   
     const dispatch = useDispatch();
@@ -28,14 +31,14 @@ export default function Header() {
        dispatch(Userverifyed());
       },[Loginuserdata])
 
-
+     
       const cartData = useSelector((state)=>state.cart.get_cart_data)
       const {cart_data_post} = useSelector((state)=>state.cart)
       // Call cart data api
       useEffect(()=>{
           dispatch(Get_Cart_Data());
           // console.log("Again call"); 
-       },[LoggeduserData, cart_data_post])
+       },[LoggeduserData, cart_data_post , removecartdata])
       
       const logout = () =>{
         dispatch(Userlogout()).then((res)=>{
