@@ -34,7 +34,7 @@ const PaymentsSlice = createSlice({
         })
         .addCase(PlaceOrderSlice.fulfilled , (state , action)=>{
          state.loading = false 
-         state.placeOrderState = [action.payload]
+         state.placeOrderState = action.payload
         })
          .addCase(PlaceOrderSlice.rejected , (state)=>{
          state.loading = false

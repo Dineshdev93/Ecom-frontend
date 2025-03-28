@@ -43,3 +43,8 @@ export const deleteuserapi = async(data,header)=>{
 export const contactUser = async(data,header)=>{
      return await commonrequest('POST' , `${BASE_URL}/userauth/api/usercontact` , data , header , "")
 }
+
+// Remove cartdata
+export const RemoveCartdata = async(header)=>{
+     return await commonrequest('DELETE' , `${BASE_URL}/carts/api/removecartdata` , {} , header , "")
+}

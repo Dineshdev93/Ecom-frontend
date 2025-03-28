@@ -5,12 +5,14 @@ import adminproductsSlice from '../slice/adminproductSlice/adminproductSlice'
 import UserAuthSlice from '../slice/userAuthSlice/UserSlice'
 import Cart_Slice from '../slice/CartSlice/cartSlice'
 import PaymentsSlice from '../slice/paymentsSlice/paymentsSlice'
+import OrderSlice from '../slice/orderSlice/orderSlice'
 export const store = configureStore({
     reducer : {
         admin : Admin_Slice,
         userauth : UserAuthSlice,
         products : adminproductsSlice,
         cart : Cart_Slice,
-        Payments : PaymentsSlice
+        Payments : PaymentsSlice,
+        orders : OrderSlice
     }
 })

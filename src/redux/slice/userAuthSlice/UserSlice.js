@@ -5,6 +5,7 @@ import {
   ForgotpasswordResetlink,
   ForgotpasswordVerify,
   getAlluser,
+  RemoveCartdata,
   ResetpasswordVerify,
   userLogin,
   userLogout,
@@ -159,6 +160,21 @@ export const userContact = createAsyncThunk("user-contact", async (data) => {
         }
 });
 
+// Remove cartdata
+export const Removecartdata = createAsyncThunk("removecartdata", async () => {
+  try {
+        const response = await RemoveCartdata()
+           console.log("misssion successful" , response.data);
+           
+           return response.data; 
+        } catch (error) {
+            console.log("error",error);
+            throw error
+        }
+});
+
+
+
 const UserAuthSlice = createSlice({
   name: "userSlice",
   initialState: {
@@ -172,6 +188,7 @@ const UserAuthSlice = createSlice({
     userData : [] , 
     Contacttouser : [] ,
     delUserState : [] , 
+    removecartdata : [] ,
     loading: false,
   },
   extraReducers: (builder) => {
@@ -294,6 +311,18 @@ const UserAuthSlice = createSlice({
        state.Contacttouser = [action.payload]
       })
        .addCase(userContact.rejected , (state)=>{
+       state.loading = false
+      })
+
+      // removecartdata
+      .addCase(Removecartdata.pending ,  (state)=>{
+        state.loading = true ;
+      })
+      .addCase(Removecartdata.fulfilled , (state , action)=>{
+       state.loading = false 
+       state.removecartdata = action.payload
+      })
+       .addCase(Removecartdata.rejected , (state)=>{
        state.loading = false
       })
 

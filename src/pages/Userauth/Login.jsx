@@ -47,13 +47,13 @@ export default function Login() {
 
   const token = localStorage.getItem("user-token") || null;
   
-  // //  useEffect for authnetication
-  // useEffect(()=>{
-  //     console.log(token);
-  //     if(token){
-  //        navigate("/")
-  //     }
-  //   },[token])
+  //  useEffect for authnetication
+  useEffect(()=>{
+      console.log(token);
+      if(token){
+         navigate("/")
+      }
+    },[token])
 
   return (
     <>

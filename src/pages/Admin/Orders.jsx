@@ -1,7 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Container, Row, Col, Card } from "react-bootstrap";
 import Table from "react-bootstrap/Table";
+import { useDispatch, useSelector } from 'react-redux';
+import { GetOrderSlice } from '../../redux/slice/orderSlice/orderSlice';
+import Spiner from '../Loader/Spiner';
 export default function Orders() {
+  const {OrdersState , loading} = useSelector((state)=> state.orders)
+  const dispatch = useDispatch()
+   // Get orders details
+    useEffect(() => {
+      dispatch(GetOrderSlice());
+    }, []);
+  console.log("ordeeeee" , OrdersState);
   return (
     <div>
           <section className="mt-5">
@@ -25,13 +35,17 @@ export default function Orders() {
 
                       </tr>
                     </thead>
-                    <tbody>
+                    {
+                     loading ? <Spiner/> : OrdersState?.map((el , index)=>{
+                       return(
+                         <>
+                           <tbody>
                       <tr>
                         <td>1</td>
-                        <td>1200</td>
-                        <td>4</td>
-                        <td>554554</td>
-                        <td>Delevered</td>
+                        <td>{el.totalPrice }</td>
+                        <td>{el.orderItems?.length}</td>
+                        <td>{el.userid                        }</td>
+                        <td>{el.orderstatus}</td>
                         <td>
                             <div>
                                 <i className='fa-solid fa-trash' style={{color:"red", cursor:"pointer"}}></i>
@@ -40,7 +54,11 @@ export default function Orders() {
  
                       </tr>
                       
-                    </tbody>
+                            </tbody>   
+                         </>
+                       )
+                     })
+                    }
                   </Table>
                 </div>
               </div>
