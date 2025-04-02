@@ -83,9 +83,9 @@ function App() {
           <Route
             path="/admin/admin-login"
             element={
-              <Layout>
+             
                 <AdminLogin />
-              </Layout>
+             
             }
           />
 

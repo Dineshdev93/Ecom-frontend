@@ -19,6 +19,8 @@ export default function Login() {
      dispatch(Userverifyed());
    },[])
    
+   
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = {
@@ -45,16 +47,18 @@ export default function Login() {
     }
   };
 
-  const token = localStorage.getItem("user-token") || null;
-  
-  //  useEffect for authnetication
-  useEffect(()=>{
-      console.log(token);
-      if(token){
-         navigate("/")
-      }
-    },[token])
+     useEffect(()=>{
+        if(LoggeduserData?.length === 1){
+           navigate("/")
+        }else if(LoggeduserData?.length < 1){
+           navigate("/login")
+        }
+     },[LoggeduserData])
+      
+    //  console.log("data",LoggeduserData.length);
 
+     
+  
   return (
     <>
     {
