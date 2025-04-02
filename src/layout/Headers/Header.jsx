@@ -21,6 +21,7 @@ export default function Header() {
   
   const {LoggeduserData ,Loginuserdata} = useSelector((state)=>state.userauth)
   const {removecartdata}  = useSelector((state)=>state.userauth)    
+ 
   
    
   const navigate = useNavigate();
@@ -82,10 +83,10 @@ export default function Header() {
                   }) :
                   <i class="fa-regular fa-user"></i>
                 } 
-              </Dropdown.Toggle>
+              </Dropdown.Toggle> 
               <Dropdown.Menu>
                 {
-                  LoggeduserData?.length <=  0  ?
+                  LoggeduserData?.length ===  0  ?
                     <Dropdown.Item href="/login">Log in</Dropdown.Item>
                   :
                   <>

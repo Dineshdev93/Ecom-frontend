@@ -22,7 +22,7 @@ const Userprofile = () => {
     // Get orders details
     useEffect(() => {
       dispatch(GetOrderSlice());
-    }, []);
+    }, [OrdersState]);
 
   return (
     <>

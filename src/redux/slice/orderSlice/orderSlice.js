@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { GetOrdersapi, Orderapi } from "../../../api/orderApi/orderapi";
+import { AdminOrdersApi, ChangeOrderStatus, GetOrdersapi, Orderapi } from "../../../api/orderApi/orderapi";
 import { toast } from "react-toastify";
 
 //  Add orders
@@ -23,8 +23,41 @@ export const Order = createAsyncThunk("Order", async (data) => {
 export const GetOrderSlice = createAsyncThunk("GetOrderSlice", async () => {
   try {
     const response = await GetOrdersapi();
+    console.log(response.data);
+    
     if (response.status === 200) {
       console.log("get Details", response.data);
+      return response.data;
+    } else {
+       console.log("error");
+    }
+  } catch (error) {
+    console.log("Error", error);
+  }
+});
+
+// Get orders for admin
+export const  adminOrderapi = createAsyncThunk("AdminOrdersApi", async () => {
+  try {
+    const response = await AdminOrdersApi();
+    
+    
+    if (response.status === 200) {
+      return response.data;
+    } else {
+       console.log("error");
+    }
+  } catch (error) {
+    console.log("Error", error);
+  }
+});
+
+// Get orders by admin
+export const  OrderStatusSlice = createAsyncThunk("OrderStatusSlice", async (data) => {
+  try {
+    const response = await ChangeOrderStatus(data);
+    if (response.status === 200) {
+      toast.success("Status changed")
       return response.data;
     } else {
        console.log("error");
@@ -39,6 +72,8 @@ const OrderSlice = createSlice({
     initialState: {
       Orderdetails : [],
       OrdersState : [] , 
+      adminOrderState : [],
+      OrderStatuschange : [], 
       loading: false,
     },
     extraReducers: (builder) => {
@@ -67,7 +102,30 @@ const OrderSlice = createSlice({
          state.loading = false
         })
   
-  
+        // get orders for admin
+        .addCase(adminOrderapi.pending ,  (state)=>{
+          state.loading = true ;
+        })
+        .addCase(adminOrderapi.fulfilled , (state , action)=>{
+         state.loading = false 
+         state.adminOrderState = action.payload
+        })
+         .addCase(adminOrderapi.rejected , (state)=>{
+         state.loading = false
+        })
+
+         // change order status by admin
+         .addCase(OrderStatusSlice.pending ,  (state)=>{
+          state.loading = true ;
+        })
+        .addCase(OrderStatusSlice.fulfilled , (state , action)=>{
+         state.loading = false 
+         state.OrderStatuschange = action.payload
+        })
+         .addCase(OrderStatusSlice.rejected , (state)=>{
+         state.loading = false
+        })
+           
     },
   });
   

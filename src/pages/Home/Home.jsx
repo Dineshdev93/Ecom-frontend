@@ -4,9 +4,9 @@ import Homeproduct from '../../components/Homeproduct/Homeproduct'
 import Homecontact from '../../components/Homecontact/Homecontact'
 import { useDispatch,useSelector } from 'react-redux'
 import { getAddedproducts, Newarrivalproducts } from '../../redux/slice/adminproductSlice/adminproductSlice'
-
+import Slider from '../../components/Slider/Slider'
 export default function Home() {
-  const [page ,setPage] = useState(1)
+  const [page ,setPage] = useState(1) 
   //  disptach function
   const dispatch = useDispatch()
 
@@ -31,6 +31,7 @@ export default function Home() {
   return (
     <div>
          <Homemain/>
+         {/* <Slider/> */}
          <Homeproduct productdata={productdata} newarrival={newarrival} loading={loading}/>
          <Homecontact/>
     </div>

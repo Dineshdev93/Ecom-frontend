@@ -16,10 +16,10 @@ export default function Homemain() {
               Fall - Winter <br /> collection 2025
             </h1>
             <p className="stay-cool mt-3">
-              "Stay cool and stylish this season with our latest Summer
-              Collection! 🌞✨ Refresh your wardrobe with breezy fabrics,
+              Stay cool and stylish this season with our latest Summer
+              Collection! Refresh your wardrobe with breezy fabrics,
               vibrant colors, and trendy designs perfect for the sunny days
-              ahead. ☀️🌿"
+              ahead.
             </p>
             <button className="shop-now mt-5" onClick={()=>navigate('/products')}>
                  Shop Now
@@ -27,6 +27,7 @@ export default function Homemain() {
           </Col>
         </Row>
       </Container>
+      
     </section>
   );
 }

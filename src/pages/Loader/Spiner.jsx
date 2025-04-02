@@ -7,12 +7,13 @@ export default function Spiner() {
       className="d-flex align-items-center justify-content-center"
       style={{ marginTop: "10rem", marginBottom: "5rem" }}
     >
-      <PropagateLoader
+      {/* <PropagateLoader
         color="#1e5d68"
         cssOverride={{}}
         size={16}
         speedMultiplier={1}
-      />
+      /> */}
+      <img src="./giffy.gif" alt="" />
     </div>
   );
 }
