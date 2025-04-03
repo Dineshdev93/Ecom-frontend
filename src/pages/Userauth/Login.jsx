@@ -19,8 +19,6 @@ export default function Login() {
      dispatch(Userverifyed());
    },[])
    
-   
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = {
@@ -67,10 +65,10 @@ export default function Login() {
         <div className="row justify-content-center">
           <div className="col-md-7  register_user" style={{marginTop:"7rem"}}>
             <h2 className="text-center">Welcome back & Sign in!</h2>
-            {/* <div class="divider">
+            <div class="divider">
             <span style={{ fontSize: "20px" }}>or</span>
-          </div> */}
-            {/* <div className="logingoogle ">
+          </div> 
+             {/* <div className="logingoogle" onClick={googleLogin}>
             <div>
               <img src="./google.png" width={30} alt="" />
             </div>
