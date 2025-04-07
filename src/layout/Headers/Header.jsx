@@ -77,7 +77,7 @@ export default function Header() {
                   LoggeduserData?.length > 0  ? LoggeduserData.map((item)=>{
                     return (
                       <>
-                         <img src={`${item.userprofile}`} alt="logo" width={50} />
+                         <img src={`${item.userprofile}`} alt="logo" className="user-profile"/>
                       </>
                     )
                   }) :
@@ -90,7 +90,7 @@ export default function Header() {
                     <Dropdown.Item href="/login">Log in</Dropdown.Item>
                   :
                   <>
-                    <NavLink to="/userprofile">Profile</NavLink>
+                    <NavLink className={"profile_link"} to="/userprofile">Profile</NavLink>
                     <Dropdown.Item href="#" onClick={logout} >Log out</Dropdown.Item>
                   </> 
                 }

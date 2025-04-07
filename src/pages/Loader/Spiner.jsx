@@ -13,7 +13,7 @@ export default function Spiner() {
         size={16}
         speedMultiplier={1}
       /> */}
-      <img src="./giffy.gif" alt="" />
+      <img src="./giffy.gif" alt="" width={200} />
     </div>
   );
 }
