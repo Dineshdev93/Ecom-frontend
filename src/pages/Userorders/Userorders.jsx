@@ -3,45 +3,56 @@ import { Container, Row, Col, Card } from "react-bootstrap";
 import { GetOrderSlice } from "../../redux/slice/orderSlice/orderSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Spiner from "../Loader/Spiner";
+import "./userOrder.scss";
+
 export default function Userorders() {
   const dispatch = useDispatch();
-  const {OrdersState , loading} = useSelector((state)=> state.orders)
-  console.log("ordeeeee" , OrdersState);
-  
-  // Get orders details
+  const { OrdersState, loading } = useSelector((state) => state.orders);
+
   useEffect(() => {
     dispatch(GetOrderSlice());
   }, []);
 
   return (
-    <>
-      <Container className="mt-5">
-       
-            <Row className="justify-content-between">
-              {
-                loading ? <Spiner/> : OrdersState?.map((el , index)=>{
-                   return(
-                    <>
-              <Card style={{ width: "100%", padding: "10px", display: "flex" , flexDirection:"row",justifyContent:"space-around" , marginTop:"4rem" }}>
-                <div>
-                  <h5>Order id : {el._id}</h5>
-                  <img src={`${el?.orderItems[0]?.productDetails?.productimage}`} width={400} height={200} alt="" />
+    <Container className="user-orders">
+      <h2 className="text-center mb-4">My Orders</h2>
+      <Row>
+        {loading ? (
+          <Spiner />
+        ) : (
+          OrdersState?.map((el, index) => (
+            <Col lg={12} key={index} className="mb-4">
+              <Card className="order-card">
+                <div className="order-image">
+                  <img
+                    src={`${el?.orderItems[0]?.productDetails?.productimage}`}
+                    alt="product"
+                  />
                 </div>
-                <div className="mt-5">
-                  <h3>{el?.orderItems[0]?.productDetails?.productname}</h3>
-                  <span><b>Discount : </b>{el?.orderItems[0]?.productDetails?.discount}</span> % <br />
-                  <span><b>Address : </b>{el?.address}</span> <br />
-                  <span><b>Total Price : </b>{el?.totalPrice}</span>
-                  <p><b>Shipping status :- </b>{el?.orderstatus}</p>
+                <div className="order-details">
+                  <h5>Order ID: {el._id}</h5>
+                  <h4>{el?.orderItems[0]?.productDetails?.productname}</h4>
+                  <p>
+                    <strong>Discount:</strong> {el?.orderItems[0]?.productDetails?.discount}%
+                  </p>
+                  <p>
+                    <strong>Address:</strong> {el?.address}
+                  </p>
+                  <p>
+                    <strong>Total Price:</strong> ₹{el?.totalPrice}
+                  </p>
+                  <p>
+                    <strong>Shipping Status:</strong>{" "}
+                    <span className={`status ${el?.orderstatus.toLowerCase()}`}>
+                      {el?.orderstatus}
+                    </span>
+                  </p>
                 </div>
-              </Card>   
-                    </>
-                   )
-                })
-              }
-            </Row>
-          
-      </Container>
-    </>
+              </Card>
+            </Col>
+          ))
+        )}
+      </Row>
+    </Container>
   );
 }

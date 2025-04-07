@@ -27,6 +27,8 @@ export default function Cartsmain({ cartdata, loading }) {
 
   const navigate = useNavigate()
   
+  console.log("cartdata" , cartdata);
+  
 
   return (
     <section className="cart-container mt-5">
@@ -79,6 +81,8 @@ export default function Cartsmain({ cartdata, loading }) {
             )}
           </Col>
 
+           {
+             cartdata?.length > 0 &&
           <Col md={4} className="cart-summary-section mt-5">
             <Card className="shadow-sm cart-summary">
               <Card.Body>
@@ -91,6 +95,7 @@ export default function Cartsmain({ cartdata, loading }) {
               </Card.Body>
             </Card>
           </Col>
+           }
         </Row>
       </Container>
     </section>

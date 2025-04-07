@@ -1,5 +1,4 @@
 import axios from "axios";
-
 export const commonrequest = async (methods, url, body, header, auth) => {
   // asign parameters values with axios default keys
   let config = {
@@ -13,7 +12,7 @@ export const commonrequest = async (methods, url, body, header, auth) => {
   let admintoken = localStorage.getItem("admin-token");
   let usertoken = localStorage.getItem("user-token");
   // console.log(usertoken);
-  
+
   if (auth === "admin") {
     config.headers.Authorization = admintoken;
   } else {
@@ -24,8 +23,9 @@ export const commonrequest = async (methods, url, body, header, auth) => {
   if (header) {
     config.headers["Content-Type"] = "multipart/form-data";
   } else {
-    config.headers["Content-Type"] = "application/json";
+    config.headers["Content-Type"] = "application/json";  
   }
+
   try {
     const response = await axios(config);
     return response;

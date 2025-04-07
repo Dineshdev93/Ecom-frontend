@@ -65,3 +65,48 @@
     padding: 10px 0;
   }
   
+
+  // for nav items
+  .bottom-header{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: #f3f3f3;
+    padding: 10px;
+    .badge-icon2,
+  span,
+  i {
+    font-size: 28px;
+    position: relative;
+
+    .badge {
+      position: absolute;
+      top: -5px; /* Adjust the position */
+      right: -10px; /* Adjust the position */
+      background-color: rgba(255, 0, 0, 0.986);
+      color: white;
+      font-size: 12px;
+      font-weight: bold;
+      padding: 2px 6px;
+      border-radius: 50%;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 18px; /* Ensure the badge doesn't shrink */
+      height: 18px;
+    }
+  }
+  .p2 a {
+    text-decoration: none;
+    font-size: 18px;
+    color: black;
+    font-weight: 500;
+  }
+  }
+
+  @media (max-width : 768px){
+      .footer{
+         display: none;
+      }
+  }
