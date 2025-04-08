@@ -1,0 +1,35 @@
+.terms-container {
+   
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 12px;
+    // box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+    color: #333;
+    font-family: 'Segoe UI', sans-serif;
+  
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 25px;
+      color: #05108a;
+      text-align: center;
+    }
+  
+    .terms-section {
+      margin-bottom: 30px;
+  
+      h2 {
+        font-size: 1.4rem;
+        color: #222;
+        margin-bottom: 10px;
+      }
+  
+      p {
+        font-size: 1rem;
+        line-height: 1.7;
+        color: #555;
+      }
+    }
+  }
+  

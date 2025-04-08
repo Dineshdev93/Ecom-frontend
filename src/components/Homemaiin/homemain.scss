@@ -1,13 +1,13 @@
 .home-container {
-  background: url("../../../public/fas.jpg");
+  background: url("../../../public/ban5.png");
   background-position: center;
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   min-height: 80vh;
   width: 100%;
 
   .summer-text {
-    color: #c8c5c4;
+    color: #405581;
     font-size: 28px;
     letter-spacing: 4px;
     line-height: 2;
@@ -16,10 +16,10 @@
   .collection {
     letter-spacing: 4px;
     font-weight: 500;
-    color: wheat;
+    color: #0993f0;
   }
   .stay-cool{
-    color: #fff;
+    color: #405581;
     font-weight: 500;
     letter-spacing: 1px;
     line-height: 1.7;
@@ -44,7 +44,7 @@
 }
 @media(max-width:992px){
     .home-container{
-        background-position: unset;
+        background-size: cover;
         text-align: center;
     }
     .home-container .column{
