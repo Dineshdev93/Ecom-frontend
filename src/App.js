@@ -27,6 +27,8 @@ import { UserPrivateroute } from "./components/Protectedroute/UserprivateRoute";
 import Error from "./Error";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import Terms from "./pages/Policy/Terms";
+import Privacypolicy from "./pages/Policy/Privacypolicy";
 function App() {
   const stripePromise = loadStripe(
     "pk_test_51R6qZVCcd2S0N0mjyQZlETJo5M6MEBAd9JmuvTf3BqqBjzjBeoRyR3b7ePoUQm0Fiob6gmTCpg0HJXYzpzYDBNH7003usjOJjs"
@@ -112,6 +114,22 @@ function App() {
             element={
               <Layout>
                 <Productdetailspage />
+              </Layout>
+            }
+          />
+          <Route
+            path="/terms"
+            element={
+              <Layout>
+                <Terms/>
+              </Layout>
+            }
+          />
+          <Route
+            path="/privacy"
+            element={
+              <Layout>
+                <Privacypolicy/>
               </Layout>
             }
           />

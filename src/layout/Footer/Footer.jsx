@@ -46,7 +46,7 @@ export default function Footer() {
 
     <>
     <div className='mt-5'>
-      <footer class="footer">
+      {/* <footer class="footer">
   <div class="footer-container">
     <div class="about footer-section">
       <h3>About Us</h3>
@@ -81,7 +81,56 @@ export default function Footer() {
     </div>
   </div>
   <div class="footer-bottom">
-    <p>&copy; 2025 YourCompany. All rights reserved.</p>
+    <p>&copy; Developed by Dinesh Kumar Sharma . </p>
+  </div>
+</footer> */}
+<footer class="footer">
+  <div class="footer-container">
+    
+    {/* <!-- About Section --> */}
+    <div class="footer-section about">
+      <h3>About Us</h3>
+      <p>Your one-stop solution for online shopping, offering the best deals and secure payments.</p>
+    </div>
+    
+    {/* <!-- Customer Service Section --> */}
+    <div class="footer-section links">
+      <h3>Customer Service</h3>
+      <ul>
+        <li><a href="#">Help & FAQs</a></li>
+        <li><a href="/user-orders">user-orders</a></li>
+        {/* <li><a href="#">Shipping Info</a></li>
+        <li><a href="#">Returns</a></li> */}
+      </ul>
+    </div>
+    
+    {/* <!-- Policies Section --> */}
+    <div class="footer-section links">
+      <h3>Policies</h3>
+      <ul>
+        <li><a href="/privacy">Privacy Policy</a></li>
+        <li><a href="/terms">Terms of Use</a></li>
+        {/* <li><a href="#">Refund Policy</a></li>
+        <li><a href="#">Payment Security</a></li> */}
+      </ul>
+    </div>
+    
+    {/* <!-- Social Media Section --> */}
+    <div class="footer-section social">
+      {/* <h3>Follow Us</h3>
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      </div> */}
+      <img src="./footerlogo.png" alt="" style={{width:"100%"}} />
+    </div>
+
+  </div>
+  
+  <div class="footer-bottom">
+    <p>&copy; 2025 iUniShop. Developed by Dinesh Kumar Sharma.</p>
   </div>
 </footer>
 

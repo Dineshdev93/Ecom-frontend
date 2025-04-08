@@ -53,7 +53,8 @@ export default function Header() {
       <nav className="container ">
         <div className="left">
           <NavLink to={"/"}>
-            <img src="https://i.postimg.cc/TP6JjSTt/logo.webp" alt="logo" />
+            {/* <img src="https://i.postimg.cc/TP6JjSTt/logo.webp" alt="logo" /> */}
+            <img src="./logo.png" alt="logo" style={{width:"22%"}} />
           </NavLink>
         </div>
         <div className="right">
@@ -65,7 +66,7 @@ export default function Header() {
           </div>
           <div className="badge-icon">
             <NavLink to={'/cart'}>
-              <i class="counts fa-cart-shopping fa-solid" data-count={2}></i>
+              <i class="counts fa-cart-shopping fa-solid" data-count={2} style={{color:"black"}}></i>
               <span className="badge">{LoggeduserData?.length > 0 ?  cartData?.length : 0}</span>
             </NavLink>
           </div>

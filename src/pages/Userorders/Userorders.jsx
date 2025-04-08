@@ -9,6 +9,9 @@ export default function Userorders() {
   const dispatch = useDispatch();
   const { OrdersState, loading } = useSelector((state) => state.orders);
 
+  console.log("orders" , OrdersState);
+  
+
   useEffect(() => {
     dispatch(GetOrderSlice());
   }, []);
@@ -52,6 +55,18 @@ export default function Userorders() {
             </Col>
           ))
         )}
+
+         {
+          OrdersState === undefined &&
+          <Col lg={12}>
+                <div className="d-flex justify-content-center">
+                    <img src="./no-orders.webp" alt="" />             
+                </div>
+                <div className="d-flex justify-content-center">
+                     <button className="btn btn-primary" >Login</button>
+                </div>
+          </Col>
+         }
       </Row>
     </Container>
   );
