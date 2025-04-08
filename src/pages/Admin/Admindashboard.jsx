@@ -8,16 +8,31 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { getAddedproducts } from "../../redux/slice/adminproductSlice/adminproductSlice";
 import { toast } from "react-toastify";
+import { adminOrderapi } from "../../redux/slice/orderSlice/orderSlice";
 export default function Admindashboard() {
   const [page, setPage] = useState(1);
   const [pageCount, setPageCount] = useState(0);
+  const [totalprice , setTotalprice] = useState(0)
 
   const dispatch = useDispatch();
   const { userData,delUserState } = useSelector((state) => state.userauth);
   const productdata = useSelector((state) => state.products.getProductsbyadmin);
+ const {adminOrderState} = useSelector((state)=>state.orders)
+  
+//  console.log("admin order data" , adminOrderState[1].totalPrice);
+   
+//  logic to get total price of all orders
+   const Totalreturns = () =>{
+      let total = 0 ;
+      for (let i = 0; i < adminOrderState?.length; i++) {
+        const element = adminOrderState[i];
+        total += element.totalPrice
+        console.log("total price" , total);
+        setTotalprice(total);
+      }
+   }
 
   
-
   const data = {
     page,
   };
@@ -63,12 +78,19 @@ export default function Admindashboard() {
     })
   };
 
+  // get orders data
+   const getordersData = () =>{
+        dispatch(adminOrderapi())
+     }
+
   useEffect(() => {
     productapi();
     getAlluserapi();
+    getordersData();
+    Totalreturns()
   }, [page , delUserState]);
 
-  console.log(delUserState);
+ 
   
 
   return (
@@ -81,7 +103,7 @@ export default function Admindashboard() {
                 <div className="d-flex justify-content-around">
                   <div>
                     <h5>Toatl Orders</h5>
-                    <h2>4</h2>
+                    <h2>{adminOrderState?.length}</h2>
                     <div className="d-flex gap-4 align-items-center">
                       <i style={{ color: "#68b2b3" }} class="fas fa-circle"></i>
                       <div>up from yesterday</div>
@@ -141,7 +163,7 @@ export default function Admindashboard() {
                 <div className="d-flex justify-content-around">
                   <div>
                     <h5>Toatl Returns</h5>
-                    <h2>11,232</h2>
+                    <h2>{totalprice}</h2>
                     <div className="d-flex gap-4 align-items-center">
                       <i
                         style={{ color: "rgb(239 95 95)" }}
@@ -245,7 +267,7 @@ export default function Admindashboard() {
                 </div>
               </div>
             </Col>
-            <Col md={4} className="mt-5">
+            {/* <Col md={4} className="mt-5">
               <Card className="p-2">
                 <h4 className="text-center">Top Selling Products</h4>
                 <div className="d-flex justify-content-around align-items-center">
@@ -256,7 +278,7 @@ export default function Admindashboard() {
                   <div>Rs. 2000</div>
                 </div>
               </Card>
-            </Col>
+            </Col> */}
           </Row>
         </Container>
       </section>

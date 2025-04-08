@@ -62,7 +62,7 @@ export default function Header() {
             <i class="fa-bars fa-solid"></i>
           </div>
           <div className="p1">
-            <NavLink to={"/products"}>Products</NavLink>
+            <NavLink to={"/products"}>Products</NavLink>      
           </div>
           <div className="badge-icon">
             <NavLink to={'/cart'}>
