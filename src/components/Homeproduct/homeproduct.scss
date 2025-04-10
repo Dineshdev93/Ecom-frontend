@@ -1,15 +1,33 @@
 .home-product {
+
+
+  .heading{
+    text-align: center;
+    font-weight: 700;
+  }
+   
+  .card{
+    border: unset;
+  }
+
+  .discount{
+    background-color: #fdd4d4;
+    color: red;
+    font-size: 12px;
+    padding-top: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 15px;
+  }
+
   .buy-now {
-    background-color: #000000;
+    background-color: #fff;
     border: 1px solid gray;
     width: 100%;
     padding: 10px;
-    border-radius: 6px;
+    border-radius: 47px;
     font-weight: 600;
-    color: white;
+    color: #000000;
   }
-  .buy-now:hover{
-      background-color: rgb(8, 46, 8)
-      // color: #000;
-  }
+  
 }

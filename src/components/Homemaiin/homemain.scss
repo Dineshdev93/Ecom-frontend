@@ -1,11 +1,6 @@
 .home-container {
-  background: url("../../../public/ban5.png");
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
+ background-color: #f8f4f1;
   min-height: 80vh;
-  width: 100%;
-
   .summer-text {
     color: #405581;
     font-size: 28px;
@@ -14,9 +9,9 @@
     font-weight: 500;
   }
   .collection {
-    letter-spacing: 4px;
-    font-weight: 500;
-    color: #0993f0;
+    letter-spacing: 2px;
+    font-weight: 900;
+    font-size: 52px;
   }
   .stay-cool{
     color: #405581;
@@ -25,15 +20,15 @@
     line-height: 1.7;
   }
   .shop-now{
-    background-color: #2a2930;
-    padding: 10px;
+    background-color: #000000;
+    padding: 6px;
     font-size: 22px;
-    width: 65%;
+    width: 36%;
     color: white;
     font-weight: 500;
     letter-spacing: 1px;
     border: none;
-    border-radius: 10px;
+    border-radius: 30px;
   }
   // .shop-now:hover{
   //    background-color: wheat   !important;
@@ -41,6 +36,42 @@
   //    color: black;
   //    border: 1px solid gray;
   // }
+  .brand-img{
+    width: 112%;
+  }
+
+  .brand-row{
+    background-color: #000000;
+    padding: 18px;
+    .brand-row , h2{
+      color: #fff;
+      font-weight: 700;
+    }
+    
+  }
+
+  .star-parent{
+    position: relative;
+    .star-icon-1{
+      position: absolute;
+    top: 60%;
+    left: 22%;
+    }
+    .star-icon-2{
+      position: absolute;
+      top: -4%;
+      // left: 82%;
+      right: 0;
+    }
+
+    .star-icon-1 img{
+      width: 19%;
+    }
+    .star-icon-2 img{
+      width: 7rem;
+    }
+  }
+
 }
 @media(max-width:992px){
     .home-container{
@@ -49,5 +80,30 @@
     }
     .home-container .column{
         margin-top: 4rem !important;
+    }
+    .home-container .shop-now{
+      width: 100%;
+    }
+    .home-container .collection{
+      font-size: 37px;
+      margin-top: 2rem;
+    }
+    .star-parent{
+      display: none;
+    }
+    .show-brands{
+       flex-direction: column;
+       justify-content: center;
+       align-items: center;
+    }
+    .show-brands .first-div{
+      border-right: unset !important;
+      padding-right: unset !important;
+      margin-right: unset !important;
+    }
+    .show-brands .second-div{
+      border-right: unset !important;
+      padding-right: unset !important;
+      margin-right: unset !important;
     }
 }

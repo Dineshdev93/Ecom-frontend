@@ -12,27 +12,26 @@ import { adminOrderapi } from "../../redux/slice/orderSlice/orderSlice";
 export default function Admindashboard() {
   const [page, setPage] = useState(1);
   const [pageCount, setPageCount] = useState(0);
-  const [totalprice , setTotalprice] = useState(0)
+  const [totalprice, setTotalprice] = useState(0);
 
   const dispatch = useDispatch();
-  const { userData,delUserState } = useSelector((state) => state.userauth);
+  const { userData, delUserState } = useSelector((state) => state.userauth);
   const productdata = useSelector((state) => state.products.getProductsbyadmin);
- const {adminOrderState} = useSelector((state)=>state.orders)
-  
-//  console.log("admin order data" , adminOrderState[1].totalPrice);
-   
-//  logic to get total price of all orders
-   const Totalreturns = () =>{
-      let total = 0 ;
-      for (let i = 0; i < adminOrderState?.length; i++) {
-        const element = adminOrderState[i];
-        total += element.totalPrice
-        console.log("total price" , total);
-        setTotalprice(total);
-      }
-   }
+  const { adminOrderState } = useSelector((state) => state.orders);
 
-  
+  //  console.log("admin order data" , adminOrderState[1].totalPrice);
+
+  //  logic to get total price of all orders
+  const Totalreturns = () => {
+    let total = 0;
+    for (let i = 0; i < adminOrderState?.length; i++) {
+      const element = adminOrderState[i];
+      total += element.totalPrice;
+      console.log("total price", total);
+      setTotalprice(total);
+    }
+  };
+
   const data = {
     page,
   };
@@ -52,8 +51,6 @@ export default function Admindashboard() {
     });
   };
 
-  
-
   // for pagination
   const handlenextpage = () => {
     if (page < pageCount) {
@@ -69,29 +66,26 @@ export default function Admindashboard() {
   //delete user by admin
   const handledeleteuser = (userid) => {
     const data = {
-      userid : userid
-    }
-    dispatch(DeleteUSer(data)).then((res)=>{
-        if(res.payload){
-           toast.success("User Deleted Successfully ")
-        }
-    })
+      userid: userid,
+    };
+    dispatch(DeleteUSer(data)).then((res) => {
+      if (res.payload) {
+        toast.success("User Deleted Successfully ");
+      }
+    });
   };
 
   // get orders data
-   const getordersData = () =>{
-        dispatch(adminOrderapi())
-     }
+  const getordersData = () => {
+    dispatch(adminOrderapi());
+  };
 
   useEffect(() => {
     productapi();
     getAlluserapi();
     getordersData();
-    Totalreturns()
-  }, [page , delUserState]);
-
- 
-  
+    Totalreturns();
+  }, [page, delUserState]);
 
   return (
     <>
@@ -227,7 +221,7 @@ export default function Admindashboard() {
                                     textAlign: "center",
                                     color: "#ff6681",
                                     fontSize: "26px",
-                                    cursor:"pointer"
+                                    cursor: "pointer",
                                   }}
                                   onClick={() => handledeleteuser(el._id)}
                                 >
