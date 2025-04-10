@@ -24,6 +24,7 @@ export default function Homemain() {
               Shop Now
             </button>
 
+           {/* for desktop */}
             <div className="d-flex justify-content-evenly align-items-center mt-4 mb-4 show-brands">
               <div className="first-div"
                 style={{
@@ -52,6 +53,39 @@ export default function Homemain() {
                 <span>Happy Customers</span>
               </div>
             </div>
+            {/* for mobile view */}
+            <div className="d-flex justify-content-evenly align-items-center mt-4 mb-4 show-brands-mobile">
+              <div className="d-flex justify-content-between show-brands-child">
+
+              <div className="first-div"
+                style={{
+                  borderRight: "2px solid rgb(191 190 190)",
+                  paddingRight: "30px",
+                  marginRight: "50px",
+                }}
+              >
+                <h1>200+ </h1>
+                <span>International Brands</span>
+              </div>
+
+              <div className="second-div"
+                style={{
+                  borderRight: "1px solid gray",
+                  paddingRight: "30px",
+                  marginRight: "30px",
+                }}
+              >
+                <h1>2000+ </h1>
+                <span>High Quality Products</span>
+              </div>
+              </div>
+
+              <div className="third-div">
+                <h1>300000+ </h1>
+                <span>Happy Customers</span>
+              </div>
+            </div>
+
           </Col>
 
           <Col md={6} style={{ marginTop: "7rem" }} className="star-parent" >
@@ -81,9 +115,29 @@ export default function Homemain() {
             <Col md={3}>
               <h2>CALVIN KLEIN</h2>
             </Col>
-            {/* <Col md={2} >
-               <h2>GUCCI</h2>  
-             </Col> */}
+          </Row>
+        </Container>
+      </div>
+
+        {/* for mobile */}
+        <div className="brand-row-2">
+        <Container>
+          <div className="d-flex justify-content-evenly align-items-center">
+            <Col md={3}>
+              <h2>ZARA</h2>
+            </Col>
+            <Col md={3}>
+              <h2>PRADA</h2>
+            </Col>
+          </div>
+          <Row className="justify-content-evenly align-items-center">
+
+            <Col md={3}>
+              <h2>GUCCI</h2>
+            </Col>
+            <Col md={3}>
+              <h2>CALVIN KLEIN</h2>
+            </Col>
           </Row>
         </Container>
       </div>
