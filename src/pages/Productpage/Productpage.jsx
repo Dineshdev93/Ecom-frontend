@@ -75,13 +75,13 @@ export default function Productpage() {
           <Col md={8}>
             <h2>All Products</h2>
           </Col>
-          <Col md={4}>
+          {/* <Col md={4}>
             <Select
               options={categoryState}
               onChange={(e) => setSelectedCategory(e.value)}
               placeholder="Filter by Category"
             />
-          </Col>
+          </Col> */}
         </Row>
         <Row className="childs gap-0">
           {loading ? (

@@ -21,3 +21,69 @@
         padding: 15px;
      }
 }
+
+
+
+.customer-feedback {
+   padding: 40px 20px;
+ 
+   .feedback-card {
+     background: #fff3cf;
+     border-radius: 10px;
+   //   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+     padding: 20px;
+     margin: 10px;
+   //   text-align: center;
+     transition: all 0.3s ease-in-out;
+      width: 90% !important;
+      height: 206px;
+     p {
+       font-size: 16px;
+       margin-bottom: 10px;
+       color: #333;
+     }
+ 
+     h5 {
+       color: #555;
+       font-weight: 600;
+     }
+     .rateing-star i{
+         color: gold;
+     }
+     &:hover {
+       transform: scale(1.05);
+     }
+   }
+ 
+   .slick-dots li button:before {
+     color: #888;
+   }
+ 
+   .slick-dots li.slick-active button:before {
+     color: #000;
+   }
+
+   .custom-arrow {
+      background-color: #fff;
+     
+      border: none;
+   
+      cursor: pointer;
+      z-index: 10;
+    
+      &.prev {
+         position: absolute;
+         top: -27%;
+         /* left: -40px; */
+         right: 9%;
+      }
+    
+      &.next {
+         position: absolute;
+         top: -27%;
+         right: 3%;
+      }
+    }
+
+ }
+ 
