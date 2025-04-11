@@ -12,6 +12,8 @@ import moment from 'moment'
 import { useNavigate} from "react-router-dom";
 
 export default function Cartsmain({ cartdata, loading }) {
+  
+  
   const dispatch = useDispatch();
   const totalAmount = cartdata?.reduce(
     (total, item) => total + item.productDetails.price * item.quantity,
