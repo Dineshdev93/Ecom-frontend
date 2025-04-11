@@ -7,7 +7,8 @@ import Card from "react-bootstrap/Card";
 import Spiner from "../../pages/Loader/Spiner";
 import {  useNavigate } from "react-router-dom";
 export default function Homeproduct({ productdata, newarrival, loading }) {
-  // console.log("data", productdata);
+ 
+ 
   const navigate = useNavigate();
   return (
     <section className="home-product mt-3">
@@ -27,7 +28,7 @@ export default function Homeproduct({ productdata, newarrival, loading }) {
                         key={key}
                         md={3}
                         className="mb-3 d-flex"
-                        onClick={() => navigate(`productsdetail/${data._id}`)}
+                        onClick={() => navigate(`productsdetail/${data._id}`,{state:{ categoryid: data.categoryid }})}
                         style={{ cursor: "pointer" }}
                       >
                         <Card style={{ width: "100%", height: "100%" }}>
@@ -78,7 +79,7 @@ export default function Homeproduct({ productdata, newarrival, loading }) {
             {newarrival.slice(0, 4).map((item, index) => {
               return (
                 <>
-                  <Col md={3} key={index} className="mb-3 d-flex mt-4"   onClick={() => navigate(`productsdetail/${item._id}`)} style={{cursor:"pointer"}}>
+                  <Col md={3} key={index} className="mb-3 d-flex mt-4"   onClick={() => navigate(`productsdetail/${item._id}`,{state:{ categoryid: item.categoryid }})} style={{cursor:"pointer"}}>
                     <Card
                       style={{ width: "100%", height: "100%" }}
                       

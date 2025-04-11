@@ -1,5 +1,4 @@
-import React from "react";
-import "./prodetailmain.scss";
+import React from 'react'
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -10,143 +9,140 @@ import Select from "react-select";
 import Modal from "react-bootstrap/Modal";
 import { useSelector, useDispatch } from "react-redux";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
-import { Userverifyed } from "../../redux/slice/userAuthSlice/UserSlice";
-import Spiner from "../../pages/Loader/Spiner";
+import { Userverifyed } from "../../src/redux/slice/userAuthSlice/UserSlice"
+import Spiner from "../pages/Loader/Spiner";
 import {
   Add_review_Slice,
   Delete_Review,
   Getting_All_Products,
   Getting_Review,
-} from "../../redux/slice/adminproductSlice/adminproductSlice";
+} from "../redux/slice/adminproductSlice/adminproductSlice";
 import { toast } from "react-toastify";
-import { AddtoCart } from "../../redux/slice/CartSlice/cartSlice";
+import { AddtoCart } from "../redux/slice/CartSlice/cartSlice";
 
-const ProductDetailsMain = (SingleproductState) => {
 
-   //  logic for showing products related from category
-  // call get All product api without pagination
-  useEffect(()=>{
-    dispatch(Getting_All_Products())
-  },[])
-  
-   const Allproducts = useSelector((state)=>state.products.GetAllProducts)
-
-    const location = useLocation();
-    const categoryid  = location?.state?.categoryid ;
+export default function ShowProductsbyid(SingleproductState) {
+    //  logic for showing products related from category
+      // call get All product api without pagination
+      useEffect(()=>{
+        dispatch(Getting_All_Products())
+      },[])
+      
+       const Allproducts = useSelector((state)=>state.products.GetAllProducts)
     
+        const location = useLocation();
+        const categoryid  = location?.state?.categoryid ;
+        
 
-    
-    
-    const filteredProducts = Allproducts.AllProducts?.filter((product) => {
-      return product.categoryid?.toString() === categoryid?.toString();
-    });
-    console.log("filter",filteredProducts)
-    
-
-  const productdata = [SingleproductState];
-  // form review data collection
-  const [description, setDesc] = useState("");
-  const [rating, setRateing] = useState("");
-  const param = useParams();
-  const productid = param.id.toString();
-
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
-  const options = [
-    { value: "1", label: "1" },
-    { value: "2", label: "2" },
-    { value: "3", label: "3" },
-    { value: "4", label: "4" },
-    { value: "5", label: "5" },
-  ];
-
-  // verify user
-  const { LoggeduserData, Loginuserdata, loading } = useSelector(
-    (state) => state.userauth
-  );
-  const { getReview_state } = useSelector((state) => state.products);
-  const { DeletedReview } = useSelector((state) => state.products);
-
-  const dispatch = useDispatch();
-  // const [username , setUsername] = useState("")
-
-  const productidObj = {
-    productid,
-  };
-
-  const username = LoggeduserData[0]?.firstname;
-  useEffect(() => {
-    dispatch(Userverifyed());
-  }, []);
-
-  const handleselect = (e) => {
-    setRateing(e.value);
-  };
-
-  const data = {
-    username,
-    rating,
-    description,
-    productid,
-  };
-
-  const submitReview = (e) => {
-    e.preventDefault();
-    // Scroll position save karein
-    if (rating.length === 0 || description.length === 0) {
-      toast.error("All fields are required !");
-    } else {
-      if (LoggeduserData.length > 0) {
-        dispatch(Add_review_Slice(data)).then((res) => {
-          window.location.reload();
+        const filteredProducts = Allproducts.AllProducts?.filter((product) => {
+            return product.categoryid?.toString() === categoryid?.toString();
         });
-      } else {
-        toast("please login for add review !");
-      }
-    }
-  };
-
-  // show rating for a product
-  const [showrating, setShowRating] = useState(0);
-  useEffect(() => {
-    let totalrating = 0;
-
-    getReview_state.map((ele, key) => {
-      totalrating = totalrating + parseInt(ele.rating);
-    });
-    setShowRating(Math.round(totalrating / getReview_state.length));
-  }, [getReview_state]);
-
-  // Delet review
-  const deleteReview = (reviewid) => {
-    const data = {
-      reviewid,
-    };
-    dispatch(Delete_Review(data)).then((res) => {
-      toast("Deleted !");
-    });
-  };
-
-  useEffect(() => {
-    dispatch(Getting_Review(productidObj));
-  }, [DeletedReview]);
-
-  //  addtocart function
-  const handelincrement = (id) => {
-    const data = {
-      id,
-    };
-    dispatch(AddtoCart(data));
-  };
-
-const navigate = useNavigate()
-
+        console.log("state",categoryid)
+        
+    
+      const productdata = [SingleproductState];
+      // form review data collection
+      const [description, setDesc] = useState("");
+      const [rating, setRateing] = useState("");
+      const param = useParams();
+      const productid = param.id.toString();
+    
+      const [show, setShow] = useState(false);
+      const handleClose = () => setShow(false);
+      const handleShow = () => setShow(true);
+    
+      const options = [
+        { value: "1", label: "1" },
+        { value: "2", label: "2" },
+        { value: "3", label: "3" },
+        { value: "4", label: "4" },
+        { value: "5", label: "5" },
+      ];
+    
+      // verify user
+      const { LoggeduserData, Loginuserdata, loading } = useSelector(
+        (state) => state.userauth
+      );
+      const { getReview_state } = useSelector((state) => state.products);
+      const { DeletedReview } = useSelector((state) => state.products);
+    
+      const dispatch = useDispatch();
+      // const [username , setUsername] = useState("")
+    
+      const productidObj = {
+        productid,
+      };
+    
+      const username = LoggeduserData[0]?.firstname;
+      useEffect(() => {
+        dispatch(Userverifyed());
+      }, []);
+    
+      const handleselect = (e) => {
+        setRateing(e.value);
+      };
+    
+      const data = {
+        username,
+        rating,
+        description,
+        productid,
+      };
+    
+      const submitReview = (e) => {
+        e.preventDefault();
+        // Scroll position save karein
+        if (rating.length === 0 || description.length === 0) {
+          toast.error("All fields are required !");
+        } else {
+          if (LoggeduserData.length > 0) {
+            dispatch(Add_review_Slice(data)).then((res) => {
+              window.location.reload();
+            });
+          } else {
+            toast("please login for add review !");
+          }
+        }
+      };
+    
+      // show rating for a product
+      const [showrating, setShowRating] = useState(0);
+      useEffect(() => {
+        let totalrating = 0;
+    
+        getReview_state.map((ele, key) => {
+         return  totalrating = totalrating + parseInt(ele.rating);
+        });
+        setShowRating(Math.round(totalrating / getReview_state.length));
+      }, [getReview_state]);
+    
+      // Delet review
+      const deleteReview = (reviewid) => {
+        const data = {
+          reviewid,
+        };
+        dispatch(Delete_Review(data)).then((res) => {
+          toast("Deleted !");
+        });
+      };
+    
+      useEffect(() => {
+        dispatch(Getting_Review(productidObj));
+      }, [DeletedReview]);
+    
+      //  addtocart function
+      const handelincrement = (id) => {
+        const data = {
+          id,
+        };
+        dispatch(AddtoCart(data));
+      };
+       
+    const navigate = useNavigate()
   return (
-    <>
-      {/* Product details section */}
-      <section className="product-details" style={{ marginTop: "7rem" }}>
+    <div>
+            {/* Product details section */}
+            <section className="product-details" style={{ marginTop: "7rem" }}>
         <Container>
           <Row className="justify-content-center">
             <Col xs={12}>
@@ -376,7 +372,7 @@ const navigate = useNavigate()
       </section>
 
       <section>
-            {/* get latest products*/}
+            {/* get all products*/}
       <Container className="mt-4">
         <hr  className="mt-5 mb-5"/>
         <h2 className="heading">Products</h2>
@@ -387,7 +383,7 @@ const navigate = useNavigate()
             {filteredProducts?.map((item, index) => {
               return (
                 <>
-                  <Col md={3} key={index} className="mb-3 d-flex mt-4" onClick={()=>navigate(`/productsdetail/${item._id}/showProducts/${item._id}`,{state:{ categoryid: item.categoryid }})} style={{cursor:"pointer"}}>
+                  <Col md={3} key={index} className="mb-3 d-flex mt-4" onClick={()=>navigate(`/productsdetail/${item._id}`,{state:{ categoryid: item.categoryid }})}  style={{cursor:"pointer"}}>
                     <Card
                       style={{ width: "100%", height: "100%" }}
                       
@@ -426,7 +422,6 @@ const navigate = useNavigate()
         </div> */}
       </Container>
       </section>
-    </>
-  );
-};
-export default ProductDetailsMain;
+    </div>
+  )
+}

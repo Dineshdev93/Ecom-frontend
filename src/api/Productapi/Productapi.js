@@ -54,3 +54,6 @@ export const DeleteReview = async(data,header)=>{
     return await commonrequest('DELETE', `${BASE_URL}/product/api/productreviewdelete/${data.reviewid}`,{},header , '' )
 }
 
+export const Allproducts = async( header )=>{
+    return await commonrequest('GET', `${BASE_URL}/product/api/getAllProductswithoutPagination`,"",header , '' )
+}
