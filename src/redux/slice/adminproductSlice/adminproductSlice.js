@@ -3,6 +3,7 @@ import {
   addcategory,
   addProduct,
   Addreview,
+  Allproducts,
   deleteproduct,
   DeleteReview,
   getallproducts,
@@ -144,8 +145,16 @@ export const Delete_Review = createAsyncThunk("Delete-review-by-user", async (da
   }
 });
 
-
-
+// get all products without pagination
+export const Getting_All_Products = createAsyncThunk("Getting_All_Products", async () => {
+  try {
+    const response = await Allproducts();
+    // console.log("Review data",response.data);
+    return response.data;
+  } catch (error) {
+    return console.log(error);
+  }
+});
 const adminproductsSlice = createSlice({
   name: "amdinproducts",
   initialState: {
@@ -159,6 +168,7 @@ const adminproductsSlice = createSlice({
     ReviewData : [] ,
     getReview_state : [],
     DeletedReview : [],
+    GetAllProducts : [],
     loading: false,
     error: null,
   },
@@ -281,6 +291,17 @@ const adminproductsSlice = createSlice({
         state.DeletedReview = action.payload;
       })
       .addCase(Delete_Review.rejected, (state) => {
+        state.loading = false;
+      })
+      // Get review by their  product
+      .addCase(Getting_All_Products.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(Getting_All_Products.fulfilled, (state, action) => {
+        state.loading = false;
+        state.GetAllProducts = action.payload;
+      })
+      .addCase(Getting_All_Products.rejected, (state) => {
         state.loading = false;
       });
   },

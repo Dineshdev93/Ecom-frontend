@@ -24,7 +24,15 @@
     width: 100%;
     // height: 50%;
   }
-  
+  .discount{
+    background-color: #fdd4d4;
+    color: red;
+    font-size: 12px;
+    padding-top: 3px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 15px;
+  }
   @media (max-width: 768px) {
     .product-details__image img {
       width: 100%;

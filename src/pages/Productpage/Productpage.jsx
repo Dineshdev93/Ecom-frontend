@@ -68,6 +68,11 @@ export default function Productpage() {
     setCategorystate(arr);
   }, [category_data]);
 
+  console.log("productdata" , productdata);
+  console.log("categorydata" , category_data);
+  
+  
+
   return (
     <div className="home-product" style={{marginTop:"7rem"}}>
       <Container className="mt-4">
@@ -93,7 +98,7 @@ export default function Productpage() {
                   {element.getAllProducts.map((data, key) => {
                     return (
                       <>
-                        <Col md={3} className="mb-3">
+                        <Col md={3} className="mb-3"  onClick={() => navigate(`/productsdetail/${data._id}`,{state:{ categoryid: data.categoryid }})}style={{cursor:"pointer"}}>
                           <Card style={{ width: "100%", height: "100%" }}>
                             <Card.Img
                               variant="top"
@@ -102,7 +107,14 @@ export default function Productpage() {
                             />
                             <Card.Body>
                               <Card.Title>{data.productname}</Card.Title>
-                              <div style={{textAlign:"center" , backgroundColor:"#535353" , cursor:"pointer" , padding:"7px" , borderRadius:"3rem"}}
+                              <div
+                              style={{ fontWeight: "600" }}
+                              className="d-flex gap-3"
+                            >
+                              <div>Rs {data.price}</div>
+                              <div className="discount">-{data.discount}%</div>
+                            </div>
+                              {/* <div style={{textAlign:"center" , backgroundColor:"#535353" , cursor:"pointer" , padding:"7px" , borderRadius:"3rem"}}
                                 onClick={()=>navigate(`/productsdetail/${data._id}`)} 
                               >
 
@@ -118,7 +130,7 @@ export default function Productpage() {
                               >
                                 Buy Now
                               </NavLink>
-                              </div>
+                              </div> */}
                             </Card.Body>
                           </Card>
                         </Col>
