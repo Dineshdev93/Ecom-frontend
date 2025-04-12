@@ -39,13 +39,21 @@ export default function Homecontact() {
   };
 
   const dispatch = useDispatch();
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(userContact(inpval)).then((res) => {
-      console.log(res.payload);
-      setInpval({ name: "", email: "", message: "" });
-      toast.success("Sent Successfully !");
-    });
+
+    if(inpval.email === "" || inpval.message === "" || inpval.name === ""){
+        toast.error("All fields are required")
+    }else{
+
+      dispatch(userContact(inpval)).then((res) => {
+        console.log(res.payload);
+        setInpval({ name: "", email: "", message: "" });
+        toast.success("Sent Successfully !");
+      });
+    }
+
   };
 
   const settings = {
