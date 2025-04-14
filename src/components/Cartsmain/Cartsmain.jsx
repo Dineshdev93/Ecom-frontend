@@ -43,7 +43,7 @@ export default function Cartsmain({ cartdata, loading }) {
 
             { cartdata?.length === 0 ? (
               <div className="shadow empty-cart">
-                <img src="/empty-cart.avif" alt="Empty Cart" className="empty-cart-img" />
+                <img src="/empty-cart.avif" style={{width:"100%"}} alt="Empty Cart" className="empty-cart-img" />
                 <p className="text-center empty-cart-text">Looks like you haven't added anything yet.</p>
               </div>
             ) : (
@@ -61,6 +61,7 @@ export default function Cartsmain({ cartdata, loading }) {
                       <h5 className="fw-bold">{item.productDetails.productname}</h5>
                       <p className="text-muted">Discount: {item.productDetails.discount}%</p>
                       <p className="fw-semibold">Price: Rs. {item.productDetails.price}</p>
+                      <span>quantity : {item.quantity} </span>
                       <p className="text-success delivery-text">Free Delivery : {dateAftertwoDays}</p>
                       <div className="d-flex cart-actions gap-2">
                         <Button variant="outline-danger" size="sm" onClick={() => removeWholeItem(item.productid)}>

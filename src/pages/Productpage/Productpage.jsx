@@ -98,12 +98,12 @@ export default function Productpage() {
                   {element.getAllProducts.map((data, key) => {
                     return (
                       <>
-                        <Col md={3} className="mb-3"  onClick={() => navigate(`/productsdetail/${data._id}`,{state:{ categoryid: data.categoryid }})}style={{cursor:"pointer"}}>
+                        <Col md={3} sm={6} xs={6} className="mb-3"  onClick={() => navigate(`/productsdetail/${data._id}`,{state:{ categoryid: data.categoryid }})}style={{cursor:"pointer"}}>
                           <Card style={{ width: "100%", height: "100%" }}>
                             <Card.Img
                               variant="top"
                               src={`${data.productimage}`}
-                              style={{ height: "250px", width: "100%" }}
+                              style={{ height: "50%", width: "100%" }}
                             />
                             <Card.Body>
                               <Card.Title>{data.productname}</Card.Title>
@@ -154,7 +154,7 @@ export default function Productpage() {
           </span>
           <span
             className="mx-2"
-            style={{ color: "rgb(114 158 199)", fontWeight: "600" }}
+            style={{ color: "#000000", fontWeight: "600" }}
           >
             Page {page} of {pagecount}
           </span>
