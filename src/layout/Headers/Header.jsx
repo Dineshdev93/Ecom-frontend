@@ -105,15 +105,15 @@ export default function Header() {
         show={show}
         onHide={handleClose}
         className="sidebar"
-        style={{ width: "50%", height: "80%", backgroundColor: "#000" }}
+        style={{ width: "85%", height: "100%", backgroundColor: "rgb(203 203 203)" }}
       >
-        <Offcanvas.Header closeButton style={{ backgroundColor: "#fff" }}>
+        <Offcanvas.Header closeButton >
           {/* <Offcanvas.Title>Offcanvas</Offcanvas.Title> */}
 
           <span>
             <i
               class="fa-regular fa-user"
-              style={{ color: "balck !important" }}
+              style={{ color: "black !important" }}
             ></i>
           </span>
         </Offcanvas.Header>

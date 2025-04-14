@@ -27,6 +27,8 @@ export default function Homeproduct({ productdata, newarrival, loading }) {
                       <Col
                         key={key}
                         md={3}
+                        xs={6}
+                        sm={6}
                         className="mb-3 d-flex"
                         onClick={() => navigate(`productsdetail/${data._id}`,{state:{ categoryid: data.categoryid }})}
                         style={{ cursor: "pointer" }}
@@ -35,7 +37,7 @@ export default function Homeproduct({ productdata, newarrival, loading }) {
                           <Card.Img
                             variant="top"
                             src={data.productimage}
-                            style={{ width: "100%", height: "250px" }}
+                            style={{ width: "100%", height: "100%" }}
                           />
                           <Card.Body className="d-flex flex-column">
                             <Card.Title>{data.productname}</Card.Title>
@@ -79,7 +81,7 @@ export default function Homeproduct({ productdata, newarrival, loading }) {
             {newarrival.slice(0, 4).map((item, index) => {
               return (
                 <>
-                  <Col md={3} key={index} className="mb-3 d-flex mt-4"   onClick={() => navigate(`productsdetail/${item._id}`,{state:{ categoryid: item.categoryid }})} style={{cursor:"pointer"}}>
+                  <Col md={3} xs={6} sm={6} key={index} className="mb-3 d-flex mt-4"   onClick={() => navigate(`productsdetail/${item._id}`,{state:{ categoryid: item.categoryid }})} style={{cursor:"pointer"}}>
                     <Card
                       style={{ width: "100%", height: "100%" }}
                       
@@ -87,7 +89,7 @@ export default function Homeproduct({ productdata, newarrival, loading }) {
                       <Card.Img
                         variant="top"
                         src={`${item.productimage}`}
-                        style={{ width: "100%", height: "250px" }}
+                        style={{ width: "100%", height: "100%" }}
                       />
                       <Card.Body className="d-flex flex-column">
                         <Card.Title>{item.productname}</Card.Title>
