@@ -379,7 +379,7 @@ const navigate = useNavigate()
             {/* get latest products*/}
       <Container className="mt-4">
         <hr  className="mt-5 mb-5"/>
-        <h2 className="heading">Products</h2>
+        <h2 className="heading">You Might Also Like</h2>
         {loading ? (
           <Spiner />
         ) : (
@@ -387,15 +387,15 @@ const navigate = useNavigate()
             {filteredProducts?.map((item, index) => {
               return (
                 <>
-                  <Col md={3} key={index} className="mb-3 d-flex mt-4" onClick={()=>navigate(`/productsdetail/${item._id}/showProducts/${item._id}`,{state:{ categoryid: item.categoryid }})} style={{cursor:"pointer"}}>
+                  <Col md={3} sm={6} xs={6} key={index} className="mb-3 d-flex mt-4" onClick={()=>navigate(`/productsdetail/${item._id}/showProducts/${item._id}`,{state:{ categoryid: item.categoryid }})} style={{cursor:"pointer"}}>
                     <Card
-                      style={{ width: "100%", height: "100%" }}
+                      style={{ width: "100%", height: "100%", border:"none" }}
                       
                     >
                       <Card.Img
                         variant="top"
                         src={`${item.productimage}`}
-                        style={{ width: "100%", height: "250px" }}
+                        style={{ width: "100%", height: "300px" }}
                       />
                       <Card.Body className="d-flex flex-column">
                         <Card.Title>{item.productname}</Card.Title>

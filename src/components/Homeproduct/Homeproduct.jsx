@@ -8,7 +8,6 @@ import Spiner from "../../pages/Loader/Spiner";
 import {  useNavigate } from "react-router-dom";
 export default function Homeproduct({ productdata, newarrival, loading }) {
  
- 
   const navigate = useNavigate();
   return (
     <section className="home-product mt-3">
@@ -37,7 +36,7 @@ export default function Homeproduct({ productdata, newarrival, loading }) {
                           <Card.Img
                             variant="top"
                             src={data.productimage}
-                            style={{ width: "100%", height: "100%" }}
+                            style={{ width: "100%", height: "300px" }}
                           />
                           <Card.Body className="d-flex flex-column">
                             <Card.Title>{data.productname}</Card.Title>
@@ -84,12 +83,11 @@ export default function Homeproduct({ productdata, newarrival, loading }) {
                   <Col md={3} xs={6} sm={6} key={index} className="mb-3 d-flex mt-4"   onClick={() => navigate(`productsdetail/${item._id}`,{state:{ categoryid: item.categoryid }})} style={{cursor:"pointer"}}>
                     <Card
                       style={{ width: "100%", height: "100%" }}
-                      
                     >
                       <Card.Img
                         variant="top"
                         src={`${item.productimage}`}
-                        style={{ width: "100%", height: "100%" }}
+                        style={{ width: "100%", height: "300px"}}
                       />
                       <Card.Body className="d-flex flex-column">
                         <Card.Title>{item.productname}</Card.Title>
