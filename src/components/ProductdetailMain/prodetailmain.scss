@@ -54,6 +54,11 @@
        .product-image {
         height: 130px;
       }
+       .product-details__image{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
     }    
   }
   
