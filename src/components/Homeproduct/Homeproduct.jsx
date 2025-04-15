@@ -36,9 +36,9 @@ export default function Homeproduct({ productdata, newarrival, loading }) {
                           <Card.Img
                             variant="top"
                             src={data.productimage}
-                            style={{ width: "100%", height: "300px" }}
+                            className="product-image"
                           />
-                          <Card.Body className="d-flex flex-column">
+                          <Card.Body className="d-flex justify-content-center align-items-center flex-column">
                             <Card.Title>{data.productname}</Card.Title>
 
                             <div
@@ -87,13 +87,14 @@ export default function Homeproduct({ productdata, newarrival, loading }) {
                       <Card.Img
                         variant="top"
                         src={`${item.productimage}`}
-                        style={{ width: "100%", height: "300px"}}
+                        className="product-image"
+
                       />
-                      <Card.Body className="d-flex flex-column">
+                      <Card.Body className="d-flex justify-content-center align-items-center flex-column">
                         <Card.Title>{item.productname}</Card.Title>
                         <div
                           style={{ fontWeight: "600" }}
-                          className="d-flex gap-3"
+                          className="d-flex justify-content-center align-items-center gap-3"
                         >
                           <div>Rs {item.price}</div>
                           <div className="discount">-{item.discount}%</div>

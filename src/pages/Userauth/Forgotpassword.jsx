@@ -1,5 +1,5 @@
 import React from 'react'
-import './loginSignup.css'
+import './loginSignup.scss'
 import { useState } from 'react';
 import {useDispatch ,useSelector} from 'react-redux'
 import { SendPasswordlink } from '../../redux/slice/userAuthSlice/UserSlice';

@@ -104,7 +104,7 @@ export default function Homecontact() {
                 <i className="fa-solid fa-star"></i>&nbsp;
                 <i className="fa-solid fa-star"></i>&nbsp;
                 <i className="fa-solid fa-star"></i>&nbsp;
-                <i className="fa-solid fa-star"></i>&nbsp;
+                <i className="fa-regular fa-star"></i>&nbsp;
               </div>
               <div className="d-flex ">
                 <h5>- Alice</h5> &nbsp;
@@ -120,8 +120,8 @@ export default function Homecontact() {
                 <i className="fa-solid fa-star"></i>&nbsp;
                 <i className="fa-solid fa-star"></i>&nbsp;
                 <i className="fa-solid fa-star"></i>&nbsp;
-                <i className="fa-solid fa-star"></i>&nbsp;
-                <i className="fa-solid fa-star"></i>&nbsp;
+                <i className="fa-regular fa-star"></i>&nbsp;
+                <i className="fa-regular fa-star"></i>&nbsp;
               </div>
               <div className="d-flex">
                 <h5>- Bob</h5>&nbsp;
@@ -137,7 +137,7 @@ export default function Homecontact() {
                 <i className="fa-solid fa-star"></i>&nbsp;
                 <i className="fa-solid fa-star"></i>&nbsp;
                 <i className="fa-solid fa-star"></i>&nbsp;
-                <i className="fa-solid fa-star"></i>&nbsp;
+                <i className="fa-regular fa-star"></i>&nbsp;
               </div>
               <div className="d-flex ">
                 <h5>- Charlie</h5> &nbsp;
@@ -151,9 +151,9 @@ export default function Homecontact() {
               <div className="rateing-star">
                 <i className="fa-solid fa-star"></i>&nbsp;
                 <i className="fa-solid fa-star"></i>&nbsp;
-                <i className="fa-solid fa-star"></i>&nbsp;
-                <i className="fa-solid fa-star"></i>&nbsp;
-                <i className="fa-solid fa-star"></i>&nbsp;
+                <i className="fa-regular fa-star"></i>&nbsp;
+                <i className="fa-regular fa-star"></i>&nbsp;
+                <i className="fa-regular fa-star"></i>&nbsp;
               </div>
               <div className="d-flex">
                 <h5>- Diana</h5> &nbsp;
@@ -169,7 +169,7 @@ export default function Homecontact() {
                 <i className="fa-solid fa-star"></i>&nbsp;
                 <i className="fa-solid fa-star"></i>&nbsp;
                 <i className="fa-solid fa-star"></i>&nbsp;
-                <i className="fa-solid fa-star"></i>&nbsp;
+                <i className="fa-regular fa-star"></i>&nbsp;
               </div>
               <div className="d-flex">
                 <h5>- Ethan</h5> &nbsp;

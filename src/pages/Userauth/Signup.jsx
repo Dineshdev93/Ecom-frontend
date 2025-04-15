@@ -1,70 +1,91 @@
-import React from 'react'
-import { useState } from 'react'
-import { NavLink } from 'react-router-dom'
-import "./loginSignup.css";
-import { Registeruser } from '../../redux/slice/userAuthSlice/UserSlice';
-import {useDispatch , useSelector}  from 'react-redux'
-import { toast } from 'react-toastify';
-import { useNavigate } from 'react-router-dom';
-import Spiner from '../Loader/Spiner'
+import React from "react";
+import { useState } from "react";
+import { NavLink } from "react-router-dom";
+import "./loginSignup.scss";
+import { Registeruser } from "../../redux/slice/userAuthSlice/UserSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import Spiner from "../Loader/Spiner";
 const Signup = () => {
   const [userProfile, setUserprofile] = useState("");
   const [error, setError] = useState(false);
   const [loader, setLoader] = useState(false);
-  const [pass,setShowpass] = useState(false) 
-  const [conpass, setConpass] = useState(false)
-  const navigate = useNavigate()
-  const[inpval , setInpval] = useState({
-      firstname:"",
-      lastname:"",
-      email:"",
-      password:"",
-      confirmpassword : ""
-  })
+  const [pass, setShowpass] = useState(false);
+  const [conpass, setConpass] = useState(false);
+  const navigate = useNavigate();
+  const [inpval, setInpval] = useState({
+    firstname: "",
+    lastname: "",
+    email: "",
+    password: "",
+    confirmpassword: "",
+  });
 
-  const handlechange = (e)=>{
-      const {name,value} = e.target;
-      setInpval({...inpval,[name]:value})
-  }
+  const handlechange = (e) => {
+    const { name, value } = e.target;
+    setInpval({ ...inpval, [name]: value });
+  };
 
-  const dispatch = useDispatch()
-  const {userRegister , loading} = useSelector((state)=>state.userauth)
-  console.log("Postdata" ,userRegister , loading);
-  
-  const handleSubmit = (e)=>{
-       e.preventDefault();
-       
-       let formdata = new FormData();
-       formdata.append("firstname",inpval.firstname)
-       formdata.append("lastname",inpval.lastname)
-       formdata.append("email",inpval.email)
-       formdata.append("password",inpval.password) 
-       formdata.append("userprofile" , userProfile)
-       formdata.append("confirmpassword",inpval.confirmpassword)
-       const headers = {
-              "Content-Type" : "multipart/form-data"
-       }
-       const data = {
-           formdata ,
-           headers
-       }
-       
-       if(inpval.firstname === "" || inpval.lastname === "" || inpval.email === "" || inpval.password === "" || userProfile === ""){
-           toast.error("All fields are required")
-       }else{
-         dispatch(Registeruser(data)).then((res)=>{
-                navigate ("/login")
-         }).catch((error)=>{
-            console.log(error);
-         })
-       }
-  }
+  const dispatch = useDispatch();
+  const { userRegister, loading } = useSelector((state) => state.userauth);
 
+  // strong password suggetion
+  const passwordfield = inpval.password;
+  const [touched, setTouched] = useState(false);
+
+  const passwordCriteria = {
+    length: passwordfield.length >= 8,
+    upperCase: /[A-Z]/.test(passwordfield),
+    lowerCase: /[a-z]/.test(passwordfield),
+    number: /[0-9]/.test(passwordfield),
+    specialChar: /[!@#$%^&*(),.?":{}|<>]/.test(passwordfield),
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    let formdata = new FormData();
+    formdata.append("firstname", inpval.firstname);
+    formdata.append("lastname", inpval.lastname);
+    formdata.append("email", inpval.email);
+    formdata.append("password", inpval.password);
+    formdata.append("userprofile", userProfile);
+    formdata.append("confirmpassword", inpval.confirmpassword);
+    const headers = {
+      "Content-Type": "multipart/form-data",
+    };
+    const data = {
+      formdata,
+      headers,
+    };
+
+    if (
+      inpval.firstname === "" ||
+      inpval.lastname === "" ||
+      inpval.email === "" ||
+      inpval.password === "" ||
+      userProfile === ""
+    ) {
+      toast.error("All fields are required");
+    } else if (inpval.password !== inpval.confirmpassword) {
+      toast.error("Password and confirm Password are not same");
+    } else {
+      dispatch(Registeruser(data))
+        .then((res) => {
+          navigate("/login");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  };
 
   return (
-    <div>
-      {
-        loading ? <Spiner/> :
+    <div className="login-signup-scss">
+      {loading ? (
+        <Spiner />
+      ) : (
         <section className="container signup_login_form_caontainer mb-5">
           <div className="row justify-content-center">
             <div className="col-md-6  register_user">
@@ -89,15 +110,14 @@ const Signup = () => {
                     aria-describedby="emailHelp"
                     placeholder="Enter first name"
                     name="firstname"
-                   onChange={handlechange}
-                    
+                    onChange={handlechange}
                   />
                 </div>
                 <div className="mt-2 mb-3">
                   <label for="exampleInputlast" className="form-label">
                     Last Name
                   </label>{" "}
-                  <br/>
+                  <br />
                   <span style={{ color: "red" }}>
                     {inpval.lastname.length === 0 && error ? error : ""}
                   </span>
@@ -107,7 +127,7 @@ const Signup = () => {
                     id="exampleInputlast"
                     aria-describedby="emailHelp"
                     placeholder="Enter first name"
-                    onChange = {handlechange}
+                    onChange={handlechange}
                     name="lastname"
                   />
                 </div>
@@ -126,7 +146,7 @@ const Signup = () => {
                     aria-describedby="emailHelp"
                     placeholder="Enter first name"
                     name="userprofile"
-                    onChange={(e)=>setUserprofile(e.target.files[0])}
+                    onChange={(e) => setUserprofile(e.target.files[0])}
                   />
                 </div>
                 <div className="mt-2 mb-3">
@@ -161,14 +181,65 @@ const Signup = () => {
                     id="exampleInputPassword1"
                     placeholder="Enter password"
                     name="password"
-                   onChange = {handlechange}
+                    onChange={handlechange}
+                    onChangeCapture={() => setTouched(true)}
                   />
                   <div className="eye_icon">
-                    <span onClick={()=>setShowpass(!pass)} style={{cursor:"pointer"}}>
-                      <i class={pass ? "fa-regular fa-eye" : "fa-regular fa-eye-slash"}></i>
+                    <span
+                      onClick={() => setShowpass(!pass)}
+                      style={{ cursor: "pointer" }}
+                    >
+                      <i
+                        class={
+                          pass ? "fa-regular fa-eye" : "fa-regular fa-eye-slash"
+                        }
+                      ></i>
                     </span>
                   </div>
                 </div>
+                {/* Show suggestions after user touches the field */}
+                {touched && (
+                  <div className="password-suggestions mt-2">
+                    <p>Password must include:</p>
+                    <ul>
+                      <li
+                        className={
+                          passwordCriteria.length ? "valid" : "invalid"
+                        }
+                      >
+                        ✅ At least 8 characters
+                      </li>
+                      <li
+                        className={
+                          passwordCriteria.upperCase ? "valid" : "invalid"
+                        }
+                      >
+                        ✅ An uppercase letter
+                      </li>
+                      <li
+                        className={
+                          passwordCriteria.lowerCase ? "valid" : "invalid"
+                        }
+                      >
+                        ✅ A lowercase letter
+                      </li>
+                      <li
+                        className={
+                          passwordCriteria.number ? "valid" : "invalid"
+                        }
+                      >
+                        ✅ A number
+                      </li>
+                      <li
+                        className={
+                          passwordCriteria.specialChar ? "valid" : "invalid"
+                        }
+                      >
+                        ✅ A special character
+                      </li>
+                    </ul>
+                  </div>
+                )}
                 <div className="mb-3 password_container">
                   <label for="exampleInputPassword2" className="form-label">
                     Confirm Password
@@ -183,25 +254,46 @@ const Signup = () => {
                     id="exampleInputPassword2"
                     placeholder="Enter confirm password"
                     name="confirmpassword"
-                     onChange={handlechange}
+                    onChange={handlechange}
                   />
                   <div className="eye_icon">
-                    <span onClick={()=>setConpass(!conpass)} style={{cursor:"pointer"}}>
-                      <i class={conpass ? "fa-regular fa-eye" : "fa-regular fa-eye-slash"}>
-                      </i>
+                    <span
+                      onClick={() => setConpass(!conpass)}
+                      style={{ cursor: "pointer" }}
+                    >
+                      <i
+                        class={
+                          conpass
+                            ? "fa-regular fa-eye"
+                            : "fa-regular fa-eye-slash"
+                        }
+                      ></i>
                     </span>
                   </div>
                 </div>
                 <div className="btn_register">
-                  <button onClick={handleSubmit}>Submit</button>
+                  <button className="handle-Submit"
+                    onClick={handleSubmit} 
+                    // disabled={
+                    //   !inpval.firstname ||
+                    //   !inpval.lastname ||
+                    //   !inpval.email ||
+                    //   !inpval.password ||
+                    //   !inpval.confirmpassword ||
+                    //   !userProfile ||
+                    //   inpval.password !== inpval.confirmpassword
+                    // } 
+                  >
+                    Submit
+                  </button>
                 </div>
               </form>
             </div>
           </div>
         </section>
-      }
+      )}
     </div>
-  )
-}
+  );
+};
 
-export default Signup
+export default Signup;

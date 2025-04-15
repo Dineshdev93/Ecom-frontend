@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { Userverifyed } from "../../redux/slice/userAuthSlice/UserSlice";
 import { GetOrderSlice } from "../../redux/slice/orderSlice/orderSlice";
-import "./userProfile.scss"; // SCSS for styles
+import "./userProfile.scss";
 
 const Userprofile = () => {
   const dispatch = useDispatch();
@@ -12,6 +12,9 @@ const Userprofile = () => {
 
   const { LoggeduserData, Loginuserdata } = useSelector((state) => state.userauth);
   const { OrdersState } = useSelector((state) => state.orders);
+
+  console.log(OrdersState);
+  
 
   useEffect(() => {
     dispatch(Userverifyed());
@@ -21,11 +24,13 @@ const Userprofile = () => {
     dispatch(GetOrderSlice());
   }, []);
 
+  const wishlistCount = 5; // Assume this comes from redux/store in future
+
   return (
     <Container className="user-profile-section">
-      <Row className="justify-content-center align-items-center">
+      <Row className="justify-content-center align-items-start">
         {/* Profile Section */}
-        <Col md={6} sm={12}>
+        <Col lg={6} md={12}>
           <Card className="profile-card">
             {LoggeduserData.map((item, key) => (
               <div key={key} className="text-center">
@@ -41,15 +46,29 @@ const Userprofile = () => {
                   <p className="user-email">
                     <i className="fa-solid fa-envelope"></i> {item.email}
                   </p>
+                  <p className="user-phone">
+                    <i className="fa-solid fa-phone"></i> +91-XXXXXXXXXX
+                  </p>
+                  <p className="user-address">
+                    <i className="fa-solid fa-location-dot"></i> 123, New Delhi, India
+                  </p>
+                  {/* <div className="d-flex justify-content-center gap-3 mt-3 flex-wrap">
+                    <Button variant="outline-primary" onClick={() => navigate("/edit-profile")}>
+                      Edit Profile
+                    </Button>
+                    <Button variant="outline-danger" onClick={() => navigate("/logout")}>
+                      Logout
+                    </Button>
+                  </div> */}
                 </Card.Body>
               </div>
             ))}
           </Card>
         </Col>
 
-        {/* Order Summary Section */}
-        <Col md={4} sm={10} className="mt-4 mt-md-0">
-          <Card className="order-summary text-center">
+        {/* Right Side Panel */}
+        <Col lg={4} md={10} className="mt-4 mt-lg-0">
+          <Card className="order-summary text-center mb-4">
             <h4>Total Orders</h4>
             <h2 className="text-success">{OrdersState?.length || 0}</h2>
             <Button
@@ -60,6 +79,18 @@ const Userprofile = () => {
               View Orders
             </Button>
           </Card>
+
+          {/* <Card className="order-summary text-center">
+            <h4>Wishlist</h4>
+            <h2 className="text-warning">{wishlistCount}</h2>
+            <Button
+              variant="warning"
+              className="order-btn mt-3 text-white"
+              onClick={() => navigate("/wishlist")}
+            >
+              View Wishlist
+            </Button>
+          </Card> */}
         </Col>
       </Row>
     </Container>

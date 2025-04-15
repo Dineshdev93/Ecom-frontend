@@ -144,12 +144,12 @@ const ProductDetailsMain = (SingleproductState) => {
 const navigate = useNavigate()
 
   return (
-    <>
+    <section className="products-detail-wise">
       {/* Product details section */}
       <section className="product-details" style={{ marginTop: "7rem" }}>
         <Container>
           <Row className="justify-content-center">
-            <Col xs={12}>
+            <Col md={12} xs={12}>
               <h2 className="product-details__title mt-4">Product Details</h2>
             </Col>
             {productdata[0].SingleproductState?.map((item, indexs) => {
@@ -163,7 +163,7 @@ const navigate = useNavigate()
                     <img
                       src={`${item.productimage}`}
                       alt="Nike Shoes"
-                      width={500}
+                      className="product-details-img"
                     />
                   </Col>
                   <Col md={6} className="product-details__info">
@@ -248,7 +248,7 @@ const navigate = useNavigate()
                       return (
                         <>
                           <div key={index}>
-                            <label htmlFor="">User Name</label>
+                            <label htmlFor="">User Name</label> 
                             <input
                               type="text"
                               value={userdata.firstname || ""}
@@ -395,9 +395,9 @@ const navigate = useNavigate()
                       <Card.Img
                         variant="top"
                         src={`${item.productimage}`}
-                        style={{ width: "100%", height: "300px" }}
+                         className="product-image"
                       />
-                      <Card.Body className="d-flex flex-column">
+                      <Card.Body className="d-flex justify-content-center align-items-center flex-column">
                         <Card.Title>{item.productname}</Card.Title>
                         <div
                           style={{ fontWeight: "600" }}
@@ -426,7 +426,7 @@ const navigate = useNavigate()
         </div> */}
       </Container>
       </section>
-    </>
+    </section>
   );
 };
 export default ProductDetailsMain;

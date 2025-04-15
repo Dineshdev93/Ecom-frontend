@@ -1,11 +1,16 @@
-import { Navigate } from "react-router-dom";
-import { Outlet } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { Userverifyed } from "../../redux/slice/userAuthSlice/UserSlice";
+import { Navigate, Outlet } from "react-router-dom";
+import { toast } from "react-toastify";
 import { useEffect } from "react";
-export const UserPrivateroute = () => {
-  
 
+export const UserPrivateroute = () => {
   const isauthenticated = localStorage.getItem("user-token");
-  return isauthenticated ? <Outlet /> : <Navigate to={"/"} />;
+
+  useEffect(() => {
+    if (!isauthenticated) {
+      toast.error("Please login first!", );
+      }
+  }, [isauthenticated]);
+
+  return isauthenticated ? <Outlet /> : <Navigate to="/" />;
 };
+
