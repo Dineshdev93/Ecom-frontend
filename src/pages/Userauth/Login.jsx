@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import "./loginSignup.css";
+import "./loginSignup.scss";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch,useSelector } from "react-redux";
 import { toast } from "react-toastify";
@@ -58,7 +58,7 @@ export default function Login() {
      
   
   return (
-    <>
+    <div className="login-signup-scss">
     {
       loading ? <Spiner/> : 
       <section className="container signup_login_form_caontainer mb-5">
@@ -134,7 +134,7 @@ export default function Login() {
       </section>
     }
 
-    </>
+    </div>
   );
 }
 

@@ -185,7 +185,7 @@ export default function Shipping() {
               </div>
 
               <div className="btn_register">
-                <button type="submit" onClick={handleSubmit}>Submit</button>
+                <button type="submit" className="submit" onClick={handleSubmit}>Submit</button>
               </div>
             </form>
           </div>

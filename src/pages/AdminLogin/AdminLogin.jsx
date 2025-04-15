@@ -42,7 +42,7 @@ export default function AdminLogin() {
       })
 
   return (
-    <div>
+    <div className="login-signup-scss">
       <>
         <section className="container signup_login_form_caontainer mb-5">
           <div className="row justify-content-center">

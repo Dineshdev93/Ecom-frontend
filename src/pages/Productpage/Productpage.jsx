@@ -103,9 +103,9 @@ export default function Productpage() {
                             <Card.Img
                               variant="top"
                               src={`${data.productimage}`}
-                              style={{ height: "50%", width: "100%" }}
+                              className="product-image"
                             />
-                            <Card.Body>
+                            <Card.Body className="d-flex flex-column justify-content-center align-items-center">
                               <Card.Title>{data.productname}</Card.Title>
                               <div
                               style={{ fontWeight: "600" }}
@@ -143,29 +143,29 @@ export default function Productpage() {
           )}
         </Row>
 
-        {/* Pagination Controls */}
-        <div className="mt-4 mb-4 d-flex justify-content-end align-items-end next-previious-icon">
-          <span
-            className="icon me-2"
-            onClick={handleprevpage}
-            style={{ cursor: "pointer" }}
-          >
-            <i className="fa-solid fa-angle-double-left"></i>
-          </span>
-          <span
-            className="mx-2"
-            style={{ color: "#000000", fontWeight: "600" }}
-          >
-            Page {page} of {pagecount}
-          </span>
-          <span
-            className="icon"
-            onClick={handlenextpage}
-            style={{ cursor: "pointer" }}
-          >
-            <i className="fa-solid fa-angle-double-right"></i>
-          </span>
-        </div>
+       {/* Pagination Controls */}
+<div className="d-flex justify-content-center align-items-center my-4">
+  <nav aria-label="Page navigation">
+    <ul className="pagination mb-0">
+      <li className={`page-item ${page === 1 ? 'disabled' : ''}`}>
+        <button className="page-link rounded-pill shadow-sm" onClick={handleprevpage}>
+          <i className="fa-solid fa-angle-double-left"></i>
+        </button>
+      </li>
+      <li className="page-item disabled">
+        <span className="page-link bg-white text-dark border-0 fw-semibold" style={{border:"none" , color:"#007bff" , backgroundColor:"#f1f1f1",transition:"all 0.3s ease"}}>
+          Page {page} of {pagecount}
+        </span>
+      </li>
+      <li className={`page-item ${page === pagecount ? 'disabled' : ''}`}>
+        <button className="page-link rounded-pill shadow-sm" onClick={handlenextpage}>
+          <i className="fa-solid fa-angle-double-right"></i>
+        </button>
+      </li>
+    </ul>
+  </nav>
+</div>
+
       </Container>
     </div>
   );

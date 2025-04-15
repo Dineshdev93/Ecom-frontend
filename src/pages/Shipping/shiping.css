@@ -37,7 +37,7 @@
     right: 10px;
     top: 45px;
   }
-  .signup_login_form_caontainer .btn_register button {
+  .signup_login_form_caontainer .btn_register .submit {
     width: 100%;
     border: none;
     background-color: #7b6ddc ;

@@ -11,6 +11,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { Userverifyed } from "../../src/redux/slice/userAuthSlice/UserSlice"
 import Spiner from "../pages/Loader/Spiner";
+import '../components/ProductdetailMain/prodetailmain.scss'
 import {
   Add_review_Slice,
   Delete_Review,
@@ -140,7 +141,7 @@ export default function ShowProductsbyid(SingleproductState) {
        
     const navigate = useNavigate()
   return (
-    <div>
+    <div className='products-detail-wise'>
             {/* Product details section */}
             <section className="product-details" style={{ marginTop: "7rem" }}>
         <Container>
@@ -159,7 +160,7 @@ export default function ShowProductsbyid(SingleproductState) {
                     <img
                       src={`${item.productimage}`}
                       alt="Nike Shoes"
-                      width={500}
+                      className='product-details-img'
                     />
                   </Col>
                   <Col md={6} className="product-details__info">
@@ -391,13 +392,14 @@ export default function ShowProductsbyid(SingleproductState) {
                       <Card.Img
                         variant="top"
                         src={`${item.productimage}`}
-                        style={{ width: "100%", height: "300px" }}
+                        className='product-image'
                       />
-                      <Card.Body className="d-flex flex-column">
+                      <Card.Body className="d-flex justify-content-center align-items-center flex-column">
                         <Card.Title>{item.productname}</Card.Title>
                         <div
                           style={{ fontWeight: "600" }}
                           className="d-flex gap-3"
+              
                         >
                           <div>Rs {item.price}</div>
                           <div className="discount">-{item.discount}%</div>

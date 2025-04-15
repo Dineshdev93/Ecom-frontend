@@ -48,8 +48,8 @@ export default function Productmainpage({productdata}) {
               <>
                 <Col md={4} className="mb-3"key={index}>
                   <Card style={{ width: "100%", height: "100%" }}>
-                    <Card.Img variant="top" style={{width:"100%" , height:"250px"}} src={`${element.productimage}`} />
-                    <Card.Body>
+                    <Card.Img variant="top"src={`${element.productimage}`} />
+                    <Card.Body >
                       <Card.Title>{element.productname}</Card.Title>
                       <button className="buy-now">Add to Cart</button>
                     </Card.Body>
