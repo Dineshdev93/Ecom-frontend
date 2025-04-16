@@ -106,12 +106,12 @@ export default function Productpage() {
                               className="product-image"
                             />
                             <Card.Body className="d-flex flex-column justify-content-center align-items-center">
-                              <Card.Title>{data.productname}</Card.Title>
+                              <Card.Title className="product-name">{data.productname}</Card.Title>
                               <div
                               style={{ fontWeight: "600" }}
-                              className="d-flex gap-3"
+                              className="manage-price-discount"
                             >
-                              <div>Rs {data.price}</div>
+                              <div className="price">Rs {data.price}</div>
                               <div className="discount">-{data.discount}%</div>
                             </div>
                               {/* <div style={{textAlign:"center" , backgroundColor:"#535353" , cursor:"pointer" , padding:"7px" , borderRadius:"3rem"}}

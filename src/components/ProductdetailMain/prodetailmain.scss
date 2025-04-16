@@ -39,6 +39,10 @@
   .product-details-img{
     width: 50%;
   }
+  .manage-price-discount{
+    display: flex;
+    gap: 10px;
+  }
 }
 .products-detail-wise .modals-body ,.text-area, input, select{
       width: 100%;
@@ -59,6 +63,19 @@
         justify-content: center;
         align-items: center;
       }
+      .manage-price-discount{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .price{
+        font-size: 13px;
+      }
+      .product-name{
+        font-size: 14px;
+      }
     }    
   }
+  
+
   

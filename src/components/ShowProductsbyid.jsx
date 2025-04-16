@@ -395,13 +395,13 @@ export default function ShowProductsbyid(SingleproductState) {
                         className='product-image'
                       />
                       <Card.Body className="d-flex justify-content-center align-items-center flex-column">
-                        <Card.Title>{item.productname}</Card.Title>
+                        <Card.Title className='product-name'>{item.productname}</Card.Title>
                         <div
                           style={{ fontWeight: "600" }}
-                          className="d-flex gap-3"
+                          className="manage-price-discount"
               
                         >
-                          <div>Rs {item.price}</div>
+                          <div className='price'>Rs {item.price}</div>
                           <div className="discount">-{item.discount}%</div>
                         </div>
                       </Card.Body>
