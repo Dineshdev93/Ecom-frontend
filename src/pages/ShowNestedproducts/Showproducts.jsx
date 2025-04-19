@@ -9,9 +9,6 @@ export default function Showproducts() {
       const product_id = param.id;
     
       const {SingleproductState} = useSelector((state)=>state.products)
-    
-      
-    
       const getSingleProductdata = () =>{
            dispatch(GetSingleproduct(product_id))
       }

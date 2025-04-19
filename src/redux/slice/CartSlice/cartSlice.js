@@ -11,7 +11,7 @@ export const AddtoCart = createAsyncThunk(
         toast.success(response.data.message);
         return response.data;
       } else {
-        toast.error(response.response.data.error);
+        toast.error("Please Login !");
         console.log("error",response.data);
       }
     } catch (error) {
