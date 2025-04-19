@@ -65,7 +65,7 @@ export default function Header() {
             <NavLink to={"/products"}>Products</NavLink>      
           </div>
           <div className="badge-icon">
-            <NavLink to={'/cart'}>
+            <NavLink to={  '/cart'}>
               <i class="counts fa-cart-shopping fa-solid" data-count={2} style={{color:"black"}}></i>
               <span className="badge">{LoggeduserData?.length > 0 ?  cartData?.length : 0}</span>
             </NavLink>

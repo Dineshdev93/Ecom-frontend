@@ -22,6 +22,7 @@ import { toast } from "react-toastify";
 import { AddtoCart } from "../../redux/slice/CartSlice/cartSlice";
 
 const ProductDetailsMain = (SingleproductState) => {
+  const navigate = useNavigate()
 
    //  logic for showing products related from category
   // call get All product api without pagination
@@ -66,6 +67,8 @@ const ProductDetailsMain = (SingleproductState) => {
   const { LoggeduserData, Loginuserdata, loading } = useSelector(
     (state) => state.userauth
   );
+  console.log("++++++++++",LoggeduserData.length);
+  
   const { getReview_state } = useSelector((state) => state.products);
   const { DeletedReview } = useSelector((state) => state.products);
 
@@ -138,10 +141,15 @@ const ProductDetailsMain = (SingleproductState) => {
     const data = {
       id,
     };
-    dispatch(AddtoCart(data));
+    if(LoggeduserData?.length === 0){
+      toast.error("Please Login !");
+       navigate("/login")
+    }else{
+
+      dispatch(AddtoCart(data));
+    }
   };
 
-const navigate = useNavigate()
 
   return (
     <section className="products-detail-wise">
