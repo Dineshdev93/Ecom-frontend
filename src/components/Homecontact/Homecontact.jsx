@@ -9,6 +9,7 @@ import { toast } from "react-toastify";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import FaqSection from "../FaqSection/Faqsection";
 
 // custom arrow components
 const NextArrow = ({ onClick }) => (
@@ -182,6 +183,9 @@ export default function Homecontact() {
           </Slider>
         </div>
       </Container>
+        <div className="mt-5 mb-5">
+            <FaqSection/>
+        </div>
 
       <section className="home-contact mt-5">
         <Container>

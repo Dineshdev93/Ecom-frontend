@@ -1,0 +1,28 @@
+
+.faq-parent{
+   width: 100%;
+   padding: 20px;
+   background: linear-gradient(to top, #fff7e0, white);
+
+   .accordion-button:not(.collapsed){
+    background-color: unset ;
+    border: unset;
+    border-color: unset;
+   }
+   .accordion{
+    --bs-accordion-bg :"unset";
+    --bs-accordion-btn-focus-box-shadow:"unset";
+   }
+   .accordion-item{
+    border: none;
+    border-bottom: 1px solid gray;
+    margin-bottom: 20px;
+   }
+   .accordion-button{
+      background-color: unset;
+   }
+   b{
+    font-size: 20px;
+   }
+
+}
