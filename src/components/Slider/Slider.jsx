@@ -6,6 +6,7 @@ import './slider.css'
 
 
 
+
 export default function SlickSlider() {
   const settings = {
     dots: true, 
@@ -20,6 +21,8 @@ export default function SlickSlider() {
   };
 
   return (
+    <>
+    
     <div style={{ width: "80%", margin: "auto", textAlign: "center" }} className="mt-5">
       <Slider {...settings}>
         <div className="custom-slide">
@@ -36,5 +39,7 @@ export default function SlickSlider() {
         </div>
       </Slider>
     </div>
+    
+    </>
   );
 }

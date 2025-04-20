@@ -31,7 +31,7 @@ import Terms from "./pages/Policy/Terms";
 import Privacypolicy from "./pages/Policy/Privacypolicy";
 import Showproducts from "./pages/ShowNestedproducts/Showproducts";
 import ScrolltoTop from "./components/Scrolling/ScrolltoTop";
-
+import FaqSection from './components/FaqSection/Faqsection'
 function App() {
   const stripePromise = loadStripe(
     "pk_test_51R6qZVCcd2S0N0mjyQZlETJo5M6MEBAd9JmuvTf3BqqBjzjBeoRyR3b7ePoUQm0Fiob6gmTCpg0HJXYzpzYDBNH7003usjOJjs"
@@ -137,7 +137,7 @@ function App() {
               </Layout>
             }
           />
-
+           {/* <Route path="/faq" element={<FaqSection/>}/> */}
           {/* Private route */}
           <Route element={<UserPrivateroute />}>
             <Route

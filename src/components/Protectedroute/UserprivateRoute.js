@@ -11,6 +11,6 @@ export const UserPrivateroute = () => {
       }
   }, [isauthenticated]);
 
-  return isauthenticated ? <Outlet /> : <Navigate to="/" />;
+  return isauthenticated ? <Outlet /> : <Navigate to="/login" />;
 };
 
