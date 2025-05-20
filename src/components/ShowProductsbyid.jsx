@@ -136,7 +136,13 @@ export default function ShowProductsbyid(SingleproductState) {
         const data = {
           id,
         };
-        dispatch(AddtoCart(data));
+        if(LoggeduserData?.length === 0){
+              toast.error("Please Login !");
+               navigate("/login")
+            }else{
+        
+              dispatch(AddtoCart(data));
+            }
       };
        
     const navigate = useNavigate()
