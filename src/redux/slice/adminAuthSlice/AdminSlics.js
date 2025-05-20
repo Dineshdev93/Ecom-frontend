@@ -67,7 +67,7 @@ export const Adminloggedin = createAsyncThunk(
 
 //  create slices for admin  apis
 export const Admin_Slice = createSlice({
-  name: " AdminSlice",
+  name: "AdminSlice",
   initialState: {
     adminpayload: [],
     adminloggeddata: [],

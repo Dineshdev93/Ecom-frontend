@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 export default function Shipping() {
 
   const location = useLocation()
-
+   
 
   const [inpval, setInpval] = useState({
     mobile: "",
