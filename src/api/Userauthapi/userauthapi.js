@@ -29,6 +29,10 @@ export const ResetpasswordVerify = async(data,header)=>{
      return await commonrequest('PUT' , `${BASE_URL}/userauth/api/resetpassword/${data.id}/${data.token}` , data , header , "")
 }
 
+export const Edituseraccountapi = async(data)=>{
+     return await commonrequest('PUT' , `${BASE_URL}/userauth/api/edituser/${data.userId}` , data.formdata , data.headers , "")
+}
+
 //  getAll user by  admin
 export const getAlluser = async(data,header)=>{
      return await commonrequest('GET' , `${BASE_URL}/userauth/api/getAlluser?page=${data.page}` , null , header , "admin")

@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import {
   contactUser,
   deleteuserapi,
+  Edituseraccountapi,
   ForgotpasswordResetlink,
   ForgotpasswordVerify,
   getAlluser,
@@ -174,7 +175,17 @@ export const Removecartdata = createAsyncThunk("removecartdata", async () => {
         }
 });
 
-
+// Edit user account api
+export const Edituseraccount = createAsyncThunk("edit-account", async (data) => {
+  try {
+        const response = await Edituseraccountapi(data)
+         console.log("response at slice" , response.data);
+         
+           return response.data; 
+        } catch (error) {
+            throw error
+        }
+});
 
 const UserAuthSlice = createSlice({
   name: "userSlice",
@@ -190,6 +201,7 @@ const UserAuthSlice = createSlice({
     Contacttouser : [] ,
     delUserState : [] , 
     removecartdata : [] ,
+    UpdateuserInfo : [],
     loading: false,
   },
   extraReducers: (builder) => {
@@ -327,7 +339,17 @@ const UserAuthSlice = createSlice({
        state.loading = false
       })
 
-
+       // update user info
+      .addCase(Edituseraccount.pending ,  (state)=>{
+        state.loading = true ;
+      })
+      .addCase(Edituseraccount.fulfilled , (state , action)=>{
+       state.loading = false 
+       state.UpdateuserInfo = action.payload
+      })
+       .addCase(Edituseraccount.rejected , (state)=>{
+       state.loading = false
+      })
   },
 });
 

@@ -17,7 +17,7 @@ export default function Checkout() {
        ...state,
        orderItems :  cartData
    } 
-  console.log(finaldata);
+  console.log( finaldata);
   
      const handlePayment = () => {
          navigate('/payment' , {state : finaldata})

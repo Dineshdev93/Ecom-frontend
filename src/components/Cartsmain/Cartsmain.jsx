@@ -16,9 +16,7 @@ export default function Cartsmain({ cartdata, loading }) {
   
   const dispatch = useDispatch();
   const totalAmount = cartdata?.reduce(
-    (total, item) => total + item.productDetails.price * item.quantity,
-    0
-  );
+    (total, item) => total + item.productDetails.price * item.quantity, 0);
 
   const handleDecrement = (id) => dispatch(Delete_Single_Product({ id }));
   const handleIncrement = (id) => dispatch(AddtoCart({ id }));

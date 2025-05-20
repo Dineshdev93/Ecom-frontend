@@ -13,7 +13,7 @@ const Userprofile = () => {
   const { LoggeduserData, Loginuserdata } = useSelector((state) => state.userauth);
   const { OrdersState } = useSelector((state) => state.orders);
 
-  console.log(OrdersState);
+  console.log("LoggeduserData" , LoggeduserData);
   
 
   useEffect(() => {
@@ -32,6 +32,11 @@ const Userprofile = () => {
         {/* Profile Section */}
         <Col lg={6} md={12}>
           <Card className="profile-card">
+
+           <div onClick={()=>navigate(`/edituser/${LoggeduserData[0]._id}`)}>
+             <i class="fa-regular fa-pen-to-square" style={{fontSize:"20px", cursor:"pointer"}}></i>
+           </div>
+
             {LoggeduserData.map((item, key) => (
               <div key={key} className="text-center">
                 <Card.Img
