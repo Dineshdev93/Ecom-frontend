@@ -32,6 +32,7 @@ import Privacypolicy from "./pages/Policy/Privacypolicy";
 import Showproducts from "./pages/ShowNestedproducts/Showproducts";
 import ScrolltoTop from "./components/Scrolling/ScrolltoTop";
 import EditProfile from "./pages/Editprofile/EditProfile";
+
 function App() {
   const stripePromise = loadStripe(
     "pk_test_51R6qZVCcd2S0N0mjyQZlETJo5M6MEBAd9JmuvTf3BqqBjzjBeoRyR3b7ePoUQm0Fiob6gmTCpg0HJXYzpzYDBNH7003usjOJjs"
