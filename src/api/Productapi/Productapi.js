@@ -57,3 +57,10 @@ export const DeleteReview = async(data,header)=>{
 export const Allproducts = async( header )=>{
     return await commonrequest('GET', `${BASE_URL}/product/api/getAllProductswithoutPagination`,"",header , '' )
 }
+
+
+// get product name and id and used in header for show product in dropdown
+export const getproductbyname = async(data, header)=>{
+    return await commonrequest('GET', `${BASE_URL}/product/api/searchProduct?search=${data.query}`,"",header , '' )
+}
+

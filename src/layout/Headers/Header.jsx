@@ -8,10 +8,14 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import {useSelector , useDispatch}  from 'react-redux'
 import { Userlogout, Userverifyed } from "../../redux/slice/userAuthSlice/UserSlice";
 import { Get_Cart_Data } from "../../redux/slice/CartSlice/cartSlice";
-
+import { toast } from "react-toastify";
+import { Searchproduct } from "../../redux/slice/adminproductSlice/adminproductSlice";
 export default function Header() {
   const [show, setShow] = useState(false);
-  
+  const [showdropdown , setShowdropdown] = useState(false)
+  const [inpval , setInpval] = useState("")
+
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   
@@ -47,17 +51,90 @@ export default function Header() {
                 navigate('/login')
         })
        }
+        
+      //  show dropdown 
+      const {Getsearchproduct} = useSelector((state)=>state.products)
     
+      const handledropdown = () =>{
+
+        const data = {
+            query : inpval
+        }
+          if(inpval){
+              setShowdropdown(true)
+              dispatch(Searchproduct(data))
+          }
+          else{
+               toast("Please insert Product name !")
+          }
+      }
+
+      useEffect(()=>{
+         if(inpval === ""){
+             setShowdropdown(false)
+         }
+      },[inpval])
+           
+
+      const Expore_btn = (id) =>{
+           setShowdropdown(false)
+           setInpval("")
+           navigate(`/productsdetail/${id}`)
+      }
   return (
-    <header className="mb-4">
+    <header className="">
       <nav className="container ">
-        <div className="left">
+        <div className="row align-items-center">
+
+        <div className="left col-md-3">
           <NavLink to={"/"}>
-            {/* <img src="https://i.postimg.cc/TP6JjSTt/logo.webp" alt="logo" /> */}
-            <img src="./logo.png" alt="logo" style={{width:"22%"}} />
+            <img src="https://i.postimg.cc/TP6JjSTt/logo.webp" alt="logo" />
+            {/* <img src="./logo.png" alt="logo" style={{width:"100%"}} /> */}
           </NavLink>
         </div>
-        <div className="right">
+
+         <div className="search-product col-md-6">
+              <input type="text" name="" value={inpval} id="" placeholder="Search Product by name or description" onChange={(e)=>setInpval(e.target.value)}/>
+              <div className="search-icon" onClick={handledropdown} >
+                   <i className="fa-solid fa-search" style={{cursor:"pointer"}}></i>
+              </div>
+              {
+              showdropdown ? 
+              <div className="col-md-8 show-results">
+                {
+                   Getsearchproduct?.AllProducts?.length > 0 ?
+                    Getsearchproduct?.AllProducts?.map((item , key)=>{
+                       return(
+                          <>
+                            <div className="show-results-childs" onClick={()=>Expore_btn(item._id)}>
+                                <div key={key}>
+                                     <h6>{item.productname}</h6>
+                                </div>
+                                <div className="mb-2">
+                                       {/* <NavLink to={`/productsdetail/${item._id}`} onClick={Expore_btn} >Explore</NavLink> */}
+                                       <img src={`${item.productimage}`} width={50} alt="" />
+                                 </div>
+                            </div>  
+                          </>
+                       )
+                    }) : <div className="text-center">
+                                 <div className="mt-3">
+                                     No Items available
+                                  </div>               
+                                  <div className="mt-4">
+                                   <i class="fa-solid fa-face-frown" style={{fontSize:"77px"}}></i>
+                                  </div>    
+                          </div>
+                }
+                
+              </div> : ""
+              }
+               
+         </div>
+
+
+
+        <div className="right col-md-3">
           <div className="hamburger" onClick={handleShow}>
             <i class="fa-bars fa-solid"></i>
           </div>
@@ -98,6 +175,7 @@ export default function Header() {
               </Dropdown.Menu>
             </Dropdown>   
           </div>
+        </div>
         </div>
       </nav>
 

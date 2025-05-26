@@ -9,6 +9,7 @@ import {
   getallproducts,
   getcategorydata,
   getNewarrivalproducts,
+  getproductbyname,
   GetReview,
   getSingleproduct
 } from "../../../api/Productapi/Productapi";
@@ -155,6 +156,16 @@ export const Getting_All_Products = createAsyncThunk("Getting_All_Products", asy
     return console.log(error);
   }
 });
+
+   export const Searchproduct = createAsyncThunk("Search_Product" , async(data)=>{
+        try {
+            const response = await getproductbyname(data)
+            return response.data
+        } catch (error) {
+            console.log("Something went wrong");
+        }
+   })
+
 const adminproductsSlice = createSlice({
   name: "amdinproducts",
   initialState: {
@@ -169,6 +180,7 @@ const adminproductsSlice = createSlice({
     getReview_state : [],
     DeletedReview : [],
     GetAllProducts : [],
+    Getsearchproduct : [],
     loading: false,
     error: null,
   },
@@ -302,6 +314,18 @@ const adminproductsSlice = createSlice({
         state.GetAllProducts = action.payload;
       })
       .addCase(Getting_All_Products.rejected, (state) => {
+        state.loading = false;
+      })
+
+      // Get product by their  product name
+      .addCase(Searchproduct.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(Searchproduct.fulfilled, (state, action) => {
+        state.loading = false;
+        state.Getsearchproduct = action.payload;
+      })
+      .addCase(Searchproduct.rejected, (state) => {
         state.loading = false;
       });
   },
