@@ -7,7 +7,8 @@ export default function Productdetailspage() {
   const dispatch = useDispatch();
   const param = useParams();
   const product_id = param.id;
-
+   
+  
   const {SingleproductState} = useSelector((state)=>state.products)
 
   
@@ -18,7 +19,7 @@ export default function Productdetailspage() {
   
   useEffect(()=>{
     getSingleProductdata()
-  },[])
+  },[product_id])
 
   return (
     <div>

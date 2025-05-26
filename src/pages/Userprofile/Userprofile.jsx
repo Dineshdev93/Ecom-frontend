@@ -68,12 +68,11 @@ const Userprofile = () => {
                 </Card.Body>
               </div>
             ))}
-          </Card>
-        </Col>
 
-        {/* Right Side Panel */}
-        <Col lg={4} md={10} className="mt-4 mt-lg-0">
-          <Card className="order-summary text-center mb-4">
+               {/* Right Side Panel */}
+        <Col lg={12} md={12} className="mt-4 mt-lg-0 ">
+           <div className="d-flex flex-column justify-content-center align-items-center">
+ 
             <h4>Total Orders</h4>
             <h2 className="text-success">{OrdersState?.length || 0}</h2>
             <Button
@@ -83,20 +82,14 @@ const Userprofile = () => {
             >
               View Orders
             </Button>
-          </Card>
-
-          {/* <Card className="order-summary text-center">
-            <h4>Wishlist</h4>
-            <h2 className="text-warning">{wishlistCount}</h2>
-            <Button
-              variant="warning"
-              className="order-btn mt-3 text-white"
-              onClick={() => navigate("/wishlist")}
-            >
-              View Wishlist
-            </Button>
-          </Card> */}
+           </div>
+       
         </Col>
+          </Card>
+        
+        </Col>
+
+       
       </Row>
     </Container>
   );

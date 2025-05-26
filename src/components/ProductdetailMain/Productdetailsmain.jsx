@@ -386,12 +386,19 @@ const ProductDetailsMain = (SingleproductState) => {
       <section>
             {/* get latest products*/}
       <Container className="mt-4">
-        <hr  className="mt-5 mb-5"/>
-        <h2 className="heading">You Might Also Like</h2>
+        {
+          filteredProducts?.length > 0 ?
+          <>
+          <hr  className="mt-5 mb-5"/>
+            <h2 className="heading">You Might Also Like</h2>
+          </>
+            : ""
+        }
         {loading ? (
           <Spiner />
         ) : (
           <Row>
+           
             {filteredProducts?.map((item, index) => {
               return (
                 <>

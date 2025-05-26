@@ -8,6 +8,7 @@ export default function Homemain() {
   const navigate = useNavigate();
   return (
     <section className="home-container">
+      <hr style={{marginTop:"0"}}/>
       <Container>
         <Row>
           <Col md={6} style={{ marginTop: "8rem" }} className="column">
