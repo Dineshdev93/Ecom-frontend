@@ -133,6 +133,11 @@ header {
 }
 
 @media (max-width: 992px) {
+  .header-items{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
   .right .p1,
   .dropdown-basic,
   .badge-icon {
