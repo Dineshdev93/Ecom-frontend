@@ -85,15 +85,15 @@ export default function Header() {
   return (
     <header className="">
       <nav className="container ">
-        <div className="row align-items-center">
-
+        <div className="header-items">
+                   
           <div className="left col-md-3">
             <NavLink to={"/"}>
               <img src="https://i.postimg.cc/TP6JjSTt/logo.webp" alt="logo" />
               {/* <img src="./logo.png" alt="logo" style={{width:"100%"}} /> */}
             </NavLink>
           </div>
-
+            
           <div className="search-product col-md-6">
             <input type="text" name="" value={inpval} id="" placeholder="Search Product by name or description" onChange={(e) => setInpval(e.target.value)} />
             <div className="search-icon" onClick={handledropdown} >
@@ -131,6 +131,7 @@ export default function Header() {
                 </div> : ""
             }
           </div>
+            
           <div className="right col-md-3">
             <div className="hamburger" onClick={handleShow}>
               <i class="fa-bars fa-solid"></i>
@@ -173,6 +174,7 @@ export default function Header() {
               </Dropdown>
             </div>
           </div>
+            
         </div>
       </nav>
 
