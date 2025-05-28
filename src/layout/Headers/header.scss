@@ -22,7 +22,7 @@ header {
       .search-icon {
         position: absolute;
         top: 1px;
-        right: 16%;
+        right: 15%;
         font-size: 20px;
         background: #000;
         color: #fff;
@@ -132,12 +132,13 @@ header {
   border: 1px solid #878585;
 }
 
-@media (max-width: 992px) {
-  .header-items{
+.header-items{
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
+
+@media (max-width: 992px) {
   .right .p1,
   .dropdown-basic,
   .badge-icon {
