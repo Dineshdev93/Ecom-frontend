@@ -259,7 +259,7 @@ const ProductDetailsMain = (SingleproductState) => {
                             <label htmlFor="">User Name</label> 
                             <input
                               type="text"
-                              value={userdata.firstname || ""}
+                              value={userdata.firstname || userdata.displayName}
                               placeholder="username"
                               name="username"
                               disabled

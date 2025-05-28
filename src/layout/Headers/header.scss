@@ -8,53 +8,51 @@ header {
   top: 0;
 
   nav {
-   
-
-    .search-product{
+    .search-product {
       display: flex;
       justify-content: center;
       align-items: center;
       position: relative;
-       input{
+      input {
         width: 70%;
         border-radius: 10px;
         outline: none;
-        border: 1px solid gray;  
-       }
-       .search-icon{
-         position: absolute;
-    top: 1px;
-    right: 16%;
-    font-size: 20px;
-    background: #000;
-    color: #fff;
-    padding-right: 20px;
-    padding-left: 20px;
-    padding-top: 7px;
-    padding-bottom: 7px;
-    /* border-radius: 10px; */
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-       }
-       .show-results{
-          position: absolute;
-    top: 102%;
-    right: 109px;
-    border: 1px solid gray;
-    padding: 14px;
-    background: #fff;
-    color: #000;
-    border-radius: 10px;
-    overflow-y: scroll;
-    height: 193px;
-          .show-results-childs{
-             display: flex;
-             justify-content: space-between;
-             align-items: center;
-             border-bottom: 1px solid gray;
-             cursor: pointer;
-          }
-       }
+        border: 1px solid gray;
+      }
+      .search-icon {
+        position: absolute;
+        top: 1px;
+        right: 16%;
+        font-size: 20px;
+        background: #000;
+        color: #fff;
+        padding-right: 20px;
+        padding-left: 20px;
+        padding-top: 7px;
+        padding-bottom: 7px;
+        /* border-radius: 10px; */
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+      }
+      .show-results {
+        position: absolute;
+        top: 102%;
+        right: 109px;
+        border: 1px solid gray;
+        padding: 14px;
+        background: #fff;
+        color: #000;
+        border-radius: 10px;
+        overflow-y: scroll;
+        height: 193px;
+        .show-results-childs {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          border-bottom: 1px solid gray;
+          cursor: pointer;
+        }
+      }
     }
     .right {
       display: flex;
@@ -144,11 +142,13 @@ header {
   .hamburger {
     display: block !important;
   }
-  .left img{
+  .left img {
     width: 62% !important;
   }
+ header nav .search-product{
+     display: none;
+  }
 }
-
 .sidebar {
   .p2 a {
     text-decoration: none;

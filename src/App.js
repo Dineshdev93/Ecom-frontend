@@ -31,9 +31,9 @@ import Terms from "./pages/Policy/Terms";
 import Privacypolicy from "./pages/Policy/Privacypolicy";
 import Showproducts from "./pages/ShowNestedproducts/Showproducts";
 import ScrolltoTop from "./components/Scrolling/ScrolltoTop";
-
 import EditProfile from "./pages/Editprofile/EditProfile"
 import FaqSection from './components/FaqSection/Faqsection'
+import GoogleAuthSuccess from "./components/GoogleAuth/GoogleAuthSuccess";
 
 function App() {
   const stripePromise = loadStripe(
@@ -139,6 +139,7 @@ function App() {
               </Layout>
             }
           />
+          <Route path="/google-auth-success" element={<GoogleAuthSuccess/>}/>
            <Route path="/faq" element={<FaqSection/>}/>
           {/* Private route */}
           <Route element={<UserPrivateroute />}>

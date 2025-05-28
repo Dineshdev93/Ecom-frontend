@@ -15,6 +15,9 @@ export default function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const {LoggeduserData , loading} = useSelector((state)=>state.userauth)
+
+
+
   useEffect(()=>{
      dispatch(Userverifyed());
    },[])
@@ -55,7 +58,9 @@ export default function Login() {
       
     //  console.log("data",LoggeduserData.length);
 
-     
+     const googleLogin = () =>{
+         window.open("http://localhost:4009/auth/google", "_self");
+     }
   
   return (
     <div className="login-signup-scss">
@@ -68,14 +73,14 @@ export default function Login() {
             <div class="divider">
             <span style={{ fontSize: "20px" }}>or</span>
           </div> 
-             {/* <div className="logingoogle" onClick={googleLogin}>
+          <div className="logingoogle" onClick={googleLogin}>
             <div>
               <img src="./google.png" width={30} alt="" />
             </div>
             <div>
               <span>Log in with Google </span>
-            </div>
-          </div> */}
+          </div>
+          </div>
             <form >
               <div className="mt-3">
                 <label for="exampleInputEmail1" className="form-label">
