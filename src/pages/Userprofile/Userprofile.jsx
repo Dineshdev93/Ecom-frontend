@@ -41,7 +41,7 @@ const Userprofile = () => {
               <div key={key} className="text-center">
                 <Card.Img
                   variant="top"
-                  src={item.userprofile}
+                  src={item.userprofile || item.image}
                   className="profile-img"
                 />
                 <Card.Body>
