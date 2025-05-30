@@ -57,9 +57,11 @@ export default function Login() {
      },[LoggeduserData])
       
     //  console.log("data",LoggeduserData.length);
-
+     
+     
+    const url = `https://ecom-backend-iie5.onrender.com` || `http://localhost:4009`
      const googleLogin = () =>{
-         window.open("http://localhost:4009/auth/google", "_self");
+         window.open(`${url}/auth/google`, "_self");
      }
   
   return (
