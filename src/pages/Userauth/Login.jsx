@@ -59,10 +59,15 @@ export default function Login() {
     //  console.log("data",LoggeduserData.length);
      
      
-    const url = `http://localhost:4009`
-     const googleLogin = () =>{
-         window.open(`${url}/auth/google`, "_self");
-     }
+   const url =
+  window.location.hostname === "localhost"
+    ? "http://localhost:4009"
+    : "https://ecom-backend-iie5.onrender.com";
+
+const googleLogin = () => {
+  console.log(url);
+  window.open(`${url}/auth/google`, "_self");
+};
   
   return (
     <div className="login-signup-scss">
