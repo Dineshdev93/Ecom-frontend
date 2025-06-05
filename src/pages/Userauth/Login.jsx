@@ -59,11 +59,7 @@ export default function Login() {
     //  console.log("data",LoggeduserData.length);
      
      
-   const url =
-  window.location.hostname === "localhost"
-    ? "http://localhost:4009"
-    : "https://ecom-backend-iie5.onrender.com";
-
+   const url = process.env.REACT_APP_API_URL
 const googleLogin = () => {
   console.log(url);
   window.open(`${url}/auth/google`, "_self");
