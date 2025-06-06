@@ -98,7 +98,7 @@ const EditProfile = () => {
                     name="lastname"
                   />
                 </div>
-                <div className="mt-2 mb-3">
+                {/* <div className="mt-2 mb-3">
                   <label for="exampleInputImg" className="form-label">
                     Upload Image
                   </label>{" "}
@@ -112,7 +112,7 @@ const EditProfile = () => {
                     name="userprofile"
                     onChange={(e) => setUserprofile(e.target.files[0])}
                   />
-                </div>
+                </div> */}
                 <div className="btn_register">
                   <button className="handle-Submit" onClick={handlesubmit}>
                     Edit
