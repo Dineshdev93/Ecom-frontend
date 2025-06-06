@@ -25,7 +25,8 @@ export default function Header() {
   const { LoggeduserData, Loginuserdata } = useSelector((state) => state.userauth)
   const { removecartdata } = useSelector((state) => state.userauth)
   
-
+   
+   
   
   
    
@@ -153,7 +154,7 @@ export default function Header() {
                     LoggeduserData?.length > 0 ? LoggeduserData.map((item) => {
                       return (
                         <>
-                          <img  src={item.image || item.userprofile} alt="logo" className="user-profile" />
+                          <img  src={`${item.image}`} alt="logo" className="user-profile" />
                         </>
                       )
                     }) :
