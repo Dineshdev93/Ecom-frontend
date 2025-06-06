@@ -59,9 +59,9 @@ export default function Login() {
     //  console.log("data",LoggeduserData.length);
      
      
-    const url = `http://localhost:4009`
+    
      const googleLogin = () =>{
-         window.open(`${url}/auth/google`, "_self");
+         window.open(`${BASE_URL}/auth/google`, "_self");
      }
   
   return (
