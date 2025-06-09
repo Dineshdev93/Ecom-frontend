@@ -102,7 +102,7 @@ export default function Header() {
             </div>
             {
               showdropdown ?
-                <div className="col-md-8 show-results">
+                <div className="col-md-7 show-results">
                   {
                     Getsearchproduct?.AllProducts?.length > 0 ?
                       Getsearchproduct?.AllProducts?.map((item, key) => {

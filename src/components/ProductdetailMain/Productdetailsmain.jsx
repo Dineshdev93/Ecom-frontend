@@ -145,7 +145,6 @@ const ProductDetailsMain = (SingleproductState) => {
       toast.error("Please Login !");
        navigate("/login")
     }else{
-
       dispatch(AddtoCart(data));
     }
   };
