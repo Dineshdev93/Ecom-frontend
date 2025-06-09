@@ -6,6 +6,7 @@ import { useDispatch,useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { Loginuser, Userverifyed } from "../../redux/slice/userAuthSlice/UserSlice";
 import Spiner from '../../../src/pages/Loader/Spiner'
+import { BASE_URL } from "../../api/helper";
 
 
 export default function Login() {
@@ -57,12 +58,9 @@ export default function Login() {
      },[LoggeduserData])
       
     //  console.log("data",LoggeduserData.length);
-     
-     
-   const url = process.env.REACT_APP_API_URL
+      
 const googleLogin = () => {
-  console.log(url);
-  window.open(`${url}/auth/google`, "_self");
+  window.open(`${BASE_URL}/auth/google`, "_self");
 };
   
   return (
