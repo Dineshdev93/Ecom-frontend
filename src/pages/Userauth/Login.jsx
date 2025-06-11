@@ -56,10 +56,6 @@ export default function Login() {
         }
      },[LoggeduserData])
       
-    //  console.log("data",LoggeduserData.length);
-     
-     
-  //  const url = process.env.REACT_APP_API_URL
 const googleLogin = () => {
   // console.log(url);
   window.open(`${BASE_URL}/auth/google`, "_self");
