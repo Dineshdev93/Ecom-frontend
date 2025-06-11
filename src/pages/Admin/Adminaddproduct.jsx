@@ -120,7 +120,6 @@ export default function Adminaddproduct() {
         <div className="row justify-content-center">
           <div className="col-md-6  register_user">
             <h1 className="text-center mt-3">Add Product</h1>
-
             <form>
               <div className="mt-2 mb-3">
                 <label for="exampleInputname" className="form-label">
