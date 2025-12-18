@@ -7,10 +7,10 @@ export const PlaceOrderSlice = createAsyncThunk(
     try {
       const response = await PlaceOrderapi(data);
       if (response.status === 200) {
-        
+
         return response.data;
       } else {
-       
+        return thunkApi.rejectWithValue(response.data);
       }
     } catch (error) {
       return thunkApi.rejectWithValue(error);
@@ -20,28 +20,28 @@ export const PlaceOrderSlice = createAsyncThunk(
 
 
 const PaymentsSlice = createSlice({
-    name: "paymentSlice",
-    initialState: {
-      placeOrderState : [],
-      loading: false,
-    },
-    extraReducers: (builder) => {
-      builder
-    
-        // Place order
-        .addCase(PlaceOrderSlice.pending ,  (state)=>{
-          state.loading = true ;
-        })
-        .addCase(PlaceOrderSlice.fulfilled , (state , action)=>{
-         state.loading = false 
-         state.placeOrderState = action.payload
-        })
-         .addCase(PlaceOrderSlice.rejected , (state)=>{
-         state.loading = false
-        })
-  
-  
-    },
-  });
-  
-  export default PaymentsSlice.reducer;
+  name: "paymentSlice",
+  initialState: {
+    placeOrderState: [],
+    loading: false,
+  },
+  extraReducers: (builder) => {
+    builder
+
+      // Place order
+      .addCase(PlaceOrderSlice.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(PlaceOrderSlice.fulfilled, (state, action) => {
+        state.loading = false
+        state.placeOrderState = action.payload
+      })
+      .addCase(PlaceOrderSlice.rejected, (state) => {
+        state.loading = false
+      })
+
+
+  },
+});
+
+export default PaymentsSlice.reducer;

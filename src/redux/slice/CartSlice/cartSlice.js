@@ -7,12 +7,14 @@ export const AddtoCart = createAsyncThunk(
   async (data, thunkApi) => {
     try {
       const response = await addtoCart(data);
+      console.log("response",response);
+      
       if (response.status === 200) { 
         toast.success(response.data.message);
         return response.data;
       } else {
-        toast.error("Please Login !");
-        console.log("error",response.data);
+        toast.error(response.response.data.error);
+        console.log("Response",response.data);
       }
     } catch (error) {
       return thunkApi.rejectWithValue(error);

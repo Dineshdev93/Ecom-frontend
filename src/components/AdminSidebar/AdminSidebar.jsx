@@ -1,4 +1,4 @@
-import React from "react";
+
 import "../../pages/Admin/admin.scss";
 import { Row, Col } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
@@ -94,10 +94,7 @@ export default function AdminSidebar({ children }) {
               ></i>
               <span>Dashboard</span>
             </div>
-            <div className="dashboard-input" style={{ fontSize: "22px" }}>
-              <input type="text" />
-              <i className="fa-solid fa-search"></i>
-            </div>
+           
             <div className="dropdown-basic">
               <Dropdown>
                 
@@ -105,13 +102,8 @@ export default function AdminSidebar({ children }) {
                   return (
                     <>
                       <Dropdown.Toggle key={index} id="dropdown-basic">
-                        {/* <i
-                          class="fa-regular fa-user"
-                          style={{ fontSize: "29px", color: "gray" }}
-                        ></i>{" "} */}
-                        <img src={`${data.profile}`} width={55} alt="" />
+                        <img src={`${data.profile}`}  alt="Profile photo" />
                         <br />
-                        {/* <h6>{data.name}</h6> */}
                       </Dropdown.Toggle>
                     </>
                   );

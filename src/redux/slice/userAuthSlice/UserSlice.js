@@ -62,6 +62,7 @@ export const Userverifyed = createAsyncThunk(
         console.log("user-verified" ,response.data);
         return response.data;
       } else {
+        toast.error(`${response.data.error}`)
         return thunkApi.rejectWithValue();
       }
     } catch (error) {

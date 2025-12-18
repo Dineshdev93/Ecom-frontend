@@ -62,12 +62,16 @@ const Payment = () => {
         }
       });
     } else {
-      toast.error("Payment Failed");
+      console.error("Payment Error:", result.error);
+      toast.error(result.error?.message || "Payment Failed");
     }
   };
 
+
+
+
   useEffect(() => {
-    if (client_secret_key.length > 0) {
+    if (client_secret_key && client_secret_key.length > 0) {
       finalPayment();
     }
   }, [client_secret_key]);
@@ -92,7 +96,7 @@ const Payment = () => {
               <div className="form_inputs mb-2 form-control p-3">
                 <CardNumberElement />
               </div>
-              <div className="form_inputs mb-2 form-control p-3"> 
+              <div className="form_inputs mb-2 form-control p-3">
                 <CardExpiryElement />
               </div>
               <div className="form_inputs form-control p-3">

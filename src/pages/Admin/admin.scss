@@ -64,9 +64,16 @@
             content: unset !important;
         }  
       }
+      #dropdown-basic{
+        img{
+            width: 50px;
+            border-radius: 50%;
+        }
+      }
 }
 
 .admin-get-products .childs .card{
      height: 100%;
      width : 100%
 }
+

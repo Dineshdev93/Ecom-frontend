@@ -8,8 +8,9 @@ import "./admin.scss";
 import Select from 'react-select'
 import { deltedProduct, getAddedproducts } from '../../redux/slice/adminproductSlice/adminproductSlice';
 import Spiner from '../Loader/Spiner';
+import { toast } from 'react-toastify';
 export default function Adminproducts() {
-  
+
   const options = [
     { value: 'chocolate', label: 'Chocolate' },
     { value: 'strawberry', label: 'Strawberry' },
@@ -21,17 +22,17 @@ export default function Adminproducts() {
   //  get response by redux slice
   const productdata = useSelector((state)=>state.products.getProductsbyadmin) 
   const{loading} = useSelector((state)=>state.products)
-    
-    
+
+
   //  disptach function
   const dispatch = useDispatch()
 
   const productapi = () =>{  
     const data = {
-        page
+      page
     }
     dispatch( getAddedproducts(data)).then((res)=>{
-        setPagecount(res.payload.Pagination.pageCount)
+      setPagecount(res.payload.Pagination.pageCount)
     })
   }
   useEffect(()=>{
@@ -40,83 +41,86 @@ export default function Adminproducts() {
 
   const handlenextpage = () =>{
     if (page < pagecount) {
-     return setPage(page + 1);
+      return setPage(page + 1);
     }
   }
   const handleprevpage = () =>{
       if(page >= pagecount){
         return setPage(page-1);
-      }
+    }
   }
 
 
   // delete functionlity of Products
   const deleteitem = (productid) =>{
-     dispatch(deltedProduct(productid))
-     productapi();
+    dispatch(deltedProduct(productid)).then((res)=>{
+      if(res.payload){
+        toast.success("Product Deleted Successfully")
+        productapi()
+      }
+    })
   }
-
   return (
-   <>
-    <div className="admin-get-products">
-      <Container className="mt-4">
-        <Row>
-           <Col md={8}>
+    <>
+      <div className="admin-get-products">
+        <Container className="mt-4">
+          <Row>
+            <Col md={8}>
               <h2>All Products</h2>
-           </Col>
-           <Col md={4}>
+            </Col>
+            <Col md={4}>
                <Select options={options} placeholder="Filter by Category"/>
-           </Col>
-        </Row>
-        <Row className='childs gap-5'>
+            </Col>
+          </Row>
+          <Row className='childs gap-5'>
           { loading ? <Spiner/> :  productdata.map((element) => {
-            return (
-              <>
-              {
+              return (
+                <>
+                  {
                 element.getAllProducts.map((data,key)=>{
                    return(
-                    <>
-                        <Col md={2} className="mb-3">
-                  <Card style={{ width: "", height: "" }}>
-                    <Card.Img variant="top" src={`${data.productimage}`} style={{ height: "200px", width: "100%", objectFit: "cover" }}/>
-                    <Card.Body>
-                      <Card.Title>{data.productname}</Card.Title>
-                      <i className='fa-solid fa-trash' onClick={()=>deleteitem(data._id)} style={{color:"red",fontSize:"25px",cursor:"pointer"}}></i>
-                    </Card.Body>
-                  </Card>
-                </Col>
-                    </>
-                   )
-                })
-              }      
-              </>
-            );
-          })}
-        </Row>
-        {/* Pagination Controls */}
-      <div className="mt-4 mb-4 d-flex justify-content-end align-items-end next-previious-icon">
-        <span
-          className="icon me-2"
-          onClick={handleprevpage}
-          style={{ cursor: "pointer" }}
-        >
-           <i className='fa-solid fa-angle-double-left'></i>
-          
-        </span>
-        <span className="mx-2" style={{ color: "rgb(139 40 40)" }}>
-          Page {page} of {pagecount}
-        </span>
-        <span
-          className="icon"
-          onClick={handlenextpage}
-          style={{ cursor: "pointer" }}
-        >
-           <i className='fa-solid fa-angle-double-right'></i>
-        </span>
+                        <>
+                          <Col md={2} className="mb-3">
+                            <Card style={{ padding: "10px" }}>
+                              <Card.Img variant="top" src={`${data.productimage}`} />
+                              <Card.Body className="d-flex  justify-content-between align-items-center">
+                                <Card.Title>{data.productname}</Card.Title>
+                                <i className='fa-solid fa-trash' onClick={() => deleteitem(data._id)} style={{ color: "red", fontSize: "25px", cursor: "pointer" }}></i>
+                              </Card.Body>
+                            </Card>
+                          </Col>
+                        </>
+                      )
+                    })
+                  }
+                </>
+              );
+            })}
+          </Row>
+          {/* Pagination Controls */}
+          <div className="mt-4 mb-4 d-flex justify-content-end align-items-end next-previious-icon">
+            <span
+              className="icon me-2"
+              onClick={handleprevpage}
+              style={{ cursor: "pointer" }}
+            >
+              <i className='fa-solid fa-angle-double-left'></i>
+
+            </span>
+            <span className="mx-2" style={{ color: "rgb(139 40 40)" }}>
+              Page {page} of {pagecount}
+            </span>
+            <span
+              className="icon"
+              onClick={handlenextpage}
+              style={{ cursor: "pointer" }}
+            >
+              <i className='fa-solid fa-angle-double-right'></i>
+            </span>
+          </div>
+        </Container>
       </div>
-      </Container>
-    </div>
-   </>
+    </>
   )
 }
 

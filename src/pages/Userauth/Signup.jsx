@@ -73,7 +73,9 @@ const Signup = () => {
     } else {
       dispatch(Registeruser(data))
         .then((res) => {
-          navigate("/login");
+          if(res.data){
+            navigate("/login");
+          }
         })
         .catch((error) => {
           console.log(error);
